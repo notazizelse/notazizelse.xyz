@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+# sitectl - runs notazizelse.xyz (and every <slug>.notazizelse.xyz) on this VM from ~/site, without root.
+#
+#   sitectl start | stop | restart | status | ensure | logs [app|tunnel]
+#   sitectl install <dir>   install an unpacked bundle (public/, server.py, sitectl) and go live
+#   sitectl tunnel-setup    create this site's tunnel, route the bare domain + www, start it
+#   sitectl routes          create a DNS record for every project in public/p/ that doesn't have one
+#   sitectl cron-install    keep it running: @reboot start, */2 ensure
+#
+# Same pattern as ~/glasses/glassesctl: own process names, own cloudflared copy, own pid files,
+# so it can never stop haven's or glasses' processes (and they can't stop this one).
+set -u
+S="$HOME/site"
+PUBLIC="$S/public"; RUN="$S/run"; LOGS="$S/logs"
+PY=/usr/bin/python3; CF="$S/bin/cloudflared"; CF_CONFIG="$S/cloudflared.yml"
+NAME=notazizelse-site; ZONE=notazizelse.xyz
+CREDS="$S/cf/$NAME.json"; ROUTED="$S/cf/routed.txt"
+CERT="$HOME/.cloudflared-notazizelse/cert.pem"   # one Cloudflare login for the whole zone, shared with glasses
+PORT="${PORT:-8795}"
+mkdir -p "$RUN" "$LOGS"
+
+alive() { [ -f "$RUN/$1.pid" ] && kill -0 "$(cat "$RUN/$1.pid")" 2>/dev/null; }
+pat() { case "$1" in app) echo "$PY $S/server.py" ;; tunnel) echo "$CF tunnel" ;; esac; }
+stop_one() {
+  alive "$1" && kill "$(cat "$RUN/$1.pid")" 2>/dev/null
+  pkill -u "$(id -u)" -f "$(pat "$1")" 2>/dev/null; sleep 1
+  pkill -9 -u "$(id -u)" -f "$(pat "$1")" 2>/dev/null; rm -f "$RUN/$1.pid"; true
+}
+healthy() { curl -fs -m "${1:-5}" "http://127.0.0.1:$PORT/healthz" >/dev/null; }
+
+start_app() {
+  alive app && { echo "app: already running (pid $(cat "$RUN/app.pid"))"; return 0; }
+  [ -d "$PUBLIC/apex" ] || { echo "app: nothing installed in $PUBLIC yet"; return 1; }
+  ( exec setsid "$PY" "$S/server.py" --root "$PUBLIC" --domain "$ZONE" --port "$PORT" </dev/null >>"$LOGS/app.log" 2>&1 ) &
+  echo $! >"$RUN/app.pid"
+  for _ in $(seq 1 20); do
+    healthy 2 && { echo "app: running on 127.0.0.1:$PORT"; return 0; }
+    sleep 0.5
+  done
+  echo "app: not answering on port $PORT, see: sitectl logs app"; return 1
+}
+
+start_tunnel() {
+  [ -f "$CF_CONFIG" ] || { echo "tunnel: not set up yet (sitectl tunnel-setup)"; return 0; }
+  alive tunnel && { echo "tunnel: already running (pid $(cat "$RUN/tunnel.pid"))"; return 0; }
+  ( exec setsid "$CF" tunnel --no-autoupdate --config "$CF_CONFIG" run </dev/null >>"$LOGS/tunnel.log" 2>&1 ) &
+  echo $! >"$RUN/tunnel.pid"
+  echo "tunnel: started for https://$ZONE"
+}
+
+rotate() {
+  for f in "$LOGS"/*.log; do
+    [ -f "$f" ] && [ "$(stat -c %s "$f")" -gt 5000000 ] || continue
+    tail -n 5000 "$f" >"$f.tmp" && cat "$f.tmp" >"$f"; rm -f "$f.tmp"
+  done
+}
+
+ensure() {
+  rotate
+  if [ -d "$PUBLIC/apex" ] && { ! alive app || ! healthy 15; }; then
+    echo "$(date -Is) ensure: app not answering, restarting" >>"$LOGS/app.log"
+    stop_one app; start_app >/dev/null
+  fi
+  if [ -f "$CF_CONFIG" ] && ! alive tunnel; then
+    echo "$(date -Is) ensure: tunnel was down, starting" >>"$LOGS/tunnel.log"
+    start_tunnel >/dev/null
+  fi
+  true
+}
+
+status() {
+  for p in app tunnel; do
+    if alive $p; then echo "$p: running (pid $(cat "$RUN/$p.pid"))"; else echo "$p: stopped"; fi
+  done
+  if healthy; then echo "local:  http://127.0.0.1:$PORT ok"; else echo "local:  http://127.0.0.1:$PORT NOT answering"; fi
+  if [ -f "$CF_CONFIG" ]; then
+    for h in "$ZONE" $(ls "$PUBLIC/p" 2>/dev/null | sed "s/\$/.$ZONE/"); do
+      code=$(curl -s -m 10 -o /dev/null -w "%{http_code}" "https://$h/" || true)
+      echo "public: https://$h -> HTTP ${code:-none}"
+    done
+  fi
+}
+
+tunnel_id() { "$PY" -c 'import json, sys; print(json.load(open(sys.argv[1]))["TunnelID"])' "$CREDS"; }
+
+# Does a hostname already exist in public DNS? (Used so we never take over a record we didn't make.)
+resolves() { "$PY" -c 'import socket, sys; socket.getaddrinfo(sys.argv[1], 443)' "$1" 2>/dev/null; }
+
+route_one() {  # route_one <hostname>
+  local host=$1 out
+  touch "$ROUTED"
+  grep -qxF "$host" "$ROUTED" && return 0
+  if resolves "$host"; then
+    # Either the *.$ZONE wildcard already covers it (it then reaches this site), or another
+    # project owns a specific record (like glasses4dyslexic). Never take over a record.
+    echo "dns: $host already resolves; leaving DNS alone"
+    return 0
+  fi
+  if out=$("$CF" tunnel --origincert "$CERT" route dns "$(tunnel_id)" "$host" 2>&1); then
+    echo "$host" >>"$ROUTED"; echo "dns: $host -> tunnel $NAME"
+  else
+    echo "dns: FAILED for $host: $out"; return 1
+  fi
+}
+
+routes() {
+  [ -f "$CREDS" ] || { echo "routes: run sitectl tunnel-setup first"; return 0; }
+  local rc=0
+  for d in "$PUBLIC"/p/*/; do
+    [ -d "$d" ] || continue
+    slug=$(basename "$d")
+    echo "$slug" | grep -qE '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$' || { echo "routes: skipping odd name $slug"; continue; }
+    route_one "$slug.$ZONE" || rc=1
+  done
+  return $rc
+}
+
+tunnel_setup() {
+  [ -f "$CERT" ] || { echo "no zone certificate at $CERT (run: ~/glasses/glassesctl tunnel-login)"; return 1; }
+  [ -x "$CF" ] || { echo "missing $CF"; return 1; }
+  mkdir -p "$S/cf"; chmod 700 "$S/cf"
+  if [ ! -f "$CREDS" ]; then
+    "$CF" tunnel --origincert "$CERT" create --credentials-file "$CREDS" "$NAME" || return 1
+  fi
+  cat >"$CF_CONFIG" <<YML
+tunnel: $(tunnel_id)
+credentials-file: $CREDS
+ingress:
+  - hostname: $ZONE
+    service: http://127.0.0.1:$PORT
+  - hostname: "*.$ZONE"
+    service: http://127.0.0.1:$PORT
+  - service: http_status:404
+YML
+  route_one "$ZONE" || return 1
+  route_one "www.$ZONE"
+  route_one "*.$ZONE"   # any other subdomain reaches this site: friendly 404, and new projects need no DNS step
+  routes
+  stop_one tunnel; start_tunnel
+}
+
+install_bundle() {  # install_bundle <unpacked dir>
+  local src=$1
+  [ -f "$src/public/apex/index.html" ] || { echo "install: $src/public/apex/index.html missing"; return 1; }
+  mkdir -p "$S/bin"
+  if [ ! -x "$CF" ]; then
+    cp ~/glasses/bin/cloudflared "$CF" && chmod 755 "$CF" && echo "install: copied cloudflared into $S/bin"
+  fi
+  "$PY" "$src/server.py" --precompress "$src/public"
+  local restart=0
+  cmp -s "$src/server.py" "$S/server.py" || restart=1
+  cp "$src/server.py" "$S/server.py.new" && mv "$S/server.py.new" "$S/server.py"
+  cp "$src/sitectl" "$S/sitectl.new" && chmod 755 "$S/sitectl.new" && mv "$S/sitectl.new" "$S/sitectl"
+  rm -rf "$S/public.old"
+  [ -d "$PUBLIC" ] && mv "$PUBLIC" "$S/public.old"
+  mv "$src/public" "$PUBLIC"
+  echo "install: site swapped in ($(du -sh "$PUBLIC" | cut -f1))"
+  if [ $restart = 1 ] || ! alive app; then stop_one app; start_app; fi
+  [ -f "$CREDS" ] && routes
+  true
+}
+
+cron_install() {
+  local block
+  block="# notazizelse-site begin
+@reboot $S/sitectl start >/dev/null 2>&1
+*/2 * * * * $S/sitectl ensure >/dev/null 2>&1
+# notazizelse-site end"
+  { crontab -l 2>/dev/null | sed '/^# notazizelse-site begin$/,/^# notazizelse-site end$/d'; echo "$block"; } | crontab -
+  echo "cron installed:"; crontab -l
+}
+
+case "${1:-status}" in
+  start)        start_app; start_tunnel ;;
+  stop)         stop_one tunnel; stop_one app; echo "stopped" ;;
+  restart)      stop_one app; start_app ;;
+  ensure)       ensure ;;
+  status)       status ;;
+  logs)         tail -n 60 "$LOGS/${2:-app}.log" ;;
+  install)      install_bundle "${2:?usage: sitectl install <dir>}" ;;
+  tunnel-setup) tunnel_setup ;;
+  routes)       routes ;;
+  cron-install) cron_install ;;
+  *) echo "usage: sitectl start|stop|restart|status|ensure|logs [app|tunnel]|install <dir>|tunnel-setup|routes|cron-install"; exit 1 ;;
+esac

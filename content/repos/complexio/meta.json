@@ -1,0 +1,23 @@
+{
+  "description": "Complex Line follower robot",
+  "language": "C",
+  "html_url": "https://github.com/notazizelse/complexio",
+  "default_branch": "main",
+  "created_at": "2026-03-21T14:26:20Z",
+  "pushed_at": "2026-03-25T18:24:59Z",
+  "private": false,
+  "languages": [
+    "C",
+    "Assembly",
+    "C++",
+    "Linker Script",
+    "Makefile"
+  ],
+  "files": [
+    "Assets",
+    "Firmware",
+    "LICENSE.md",
+    "PCB",
+    "README.md"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "description": "Fixes two most common build problems when using Homebrew arm-none-eabi-gcc",
+  "language": "Python",
+  "html_url": "https://github.com/notazizelse/STM32_homebrew_fix_script_for_mac",
+  "default_branch": "main",
+  "created_at": "2026-06-29T10:44:45Z",
+  "pushed_at": "2026-06-29T11:14:34Z",
+  "private": false,
+  "languages": [
+    "Python"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "stm32_fix.py"
+  ]
+}

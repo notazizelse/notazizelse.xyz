@@ -1,0 +1,23 @@
+{
+  "description": "The code for haven tashkent registration bot",
+  "language": "Python",
+  "html_url": "https://github.com/notazizelse/haven-tashkent_bot",
+  "default_branch": "main",
+  "created_at": "2026-09-16T13:03:02Z",
+  "pushed_at": "2026-09-16T13:27:42Z",
+  "private": false,
+  "languages": [
+    "Python"
+  ],
+  "files": [
+    ".gitignore",
+    "LICENSE.md",
+    "README.md",
+    "bot.py",
+    "config.py",
+    "db.py",
+    "handlers",
+    "locales.py",
+    "requirements.txt"
+  ]
+}

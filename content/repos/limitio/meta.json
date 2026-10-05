@@ -1,0 +1,26 @@
+{
+  "description": "Your personal time guardian",
+  "language": "C#",
+  "html_url": "https://github.com/notazizelse/limitio",
+  "default_branch": "claude/windows-traffic-monitor-limits-eutfx4",
+  "created_at": "2026-09-26T10:50:02Z",
+  "pushed_at": "2026-09-26T14:42:23Z",
+  "private": false,
+  "languages": [
+    "C#",
+    "Inno Setup"
+  ],
+  "files": [
+    ".github",
+    ".gitignore",
+    "Directory.Build.props",
+    "LICENSE",
+    "LimitIO.sln",
+    "README.md",
+    "docs",
+    "global.json",
+    "installer",
+    "src",
+    "tests"
+  ]
+}

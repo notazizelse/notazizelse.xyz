@@ -1,0 +1,1398 @@
+{
+  "_readme": "One entry per project; each gets https://<slug>.notazizelse.xyz. Optional keys: cover, gallery, body, readme, facts, docs, files, links, app, live, repo, root, credit. Paths are on this PC. 'root' is the local folder that matches the GitHub repo, used to turn relative links inside docs into GitHub links. 'small' projects go in the second list on the home page.",
+  "projects": [
+    {
+      "slug": "camp",
+      "title": "CAMP v2",
+      "year": "2026",
+      "status": "rev B manufactured",
+      "short": "The board 200 students built at Technocamp: an Arduino Nano CubeSat payload computer, all through-hole.",
+      "lead": [
+        "CAMP v2 is the board I designed for the electronics class at Technocamp 2026. It's an 80 × 80 mm carrier for an Arduino Nano that reads temperature, humidity and carbon monoxide, shows them on a small screen and sends them over USB. That's the same job the payload computer of a real CubeSat does.",
+        "Every part is through-hole, so a 12-year-old can solder it with a normal iron and no magnifying glass. The board has no chips of its own. The Nano does the thinking, and the board gives it clean wiring, the right resistors in the right places, and connectors that only fit one way."
+      ],
+      "repo": "notazizelse/camp",
+      "root": "C:/Users/admin/Documents/projects/pcb/camp-main",
+      "cover": {
+        "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/pcb-top.png",
+        "alt": "Top side of the CAMP v2 PCB",
+        "caption": "Top side, rev B. The silkscreen says notazizelse@github."
+      },
+      "facts": [
+        [
+          "Size",
+          "80 × 80 mm, 2 layers, all through-hole"
+        ],
+        [
+          "Brain",
+          "Arduino Nano (ATmega328P) on sockets"
+        ],
+        [
+          "Sensors",
+          "DHT11 temperature + humidity, MQ-7 carbon monoxide"
+        ],
+        [
+          "Outputs",
+          "16×2 I²C LCD, two RGB LEDs, three buttons, USB serial"
+        ],
+        [
+          "Tools",
+          "KiCad 10, LCSC parts, JLCPCB production files"
+        ],
+        [
+          "Made for",
+          "Technocamp 2026, Robotics & Engineering Association, Turin Polytechnic University in Tashkent"
+        ]
+      ],
+      "body": [
+        {
+          "h": "Why I made it",
+          "p": [
+            "At Technocamp I taught 200 students aged 12 to 17 to design PCBs and etch them with chemicals in a camp in the mountains. They needed a board that does something real, that a beginner can assemble, and that still teaches proper wiring. Loose sensor modules on a breadboard fall apart, so this board turns them into one instrument."
+          ]
+        },
+        {
+          "h": "How it works",
+          "p": [
+            "The sensors and buttons on the left tell the Arduino something. The screen and LEDs on the right are how the Arduino tells you something. Nothing talks to anything else directly, every signal goes through the Nano. The LEDs sit in sockets so they can be swapped, and a jumper picks common-cathode or common-anode LEDs."
+          ]
+        },
+        {
+          "h": "Teaching with it",
+          "p": [
+            "The build guide, troubleshooting guide and hardware reference are written in English and Uzbek. The back of the board says PER ASPERA AD ASTRA. This autumn I'm using the same board to teach 20 students at Turin Polytechnic, with boards ordered from China this time instead of etched by hand."
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/pcb-top-annotated.png",
+          "alt": "CAMP v2 with every connector labelled",
+          "caption": "Every connector, labelled for students",
+          "full": true
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/block-diagram.png",
+          "alt": "Block diagram of the board",
+          "caption": "Block diagram"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/schematic.png",
+          "alt": "Schematic",
+          "caption": "Schematic"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/pcb-bottom.png",
+          "alt": "Bottom side of the board",
+          "caption": "Bottom side"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/copper-pours.png",
+          "alt": "Copper pours on both layers",
+          "caption": "Copper pours"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/production/campv2_review.png",
+          "alt": "Front and back copper side by side",
+          "caption": "Front and back copper, the last check before ordering",
+          "full": true
+        }
+      ],
+      "docs": [
+        {
+          "src": "README.md",
+          "name": "build-guide",
+          "title": "Build guide",
+          "desc": "Parts, pin map, soldering order, flashing and things to try."
+        },
+        {
+          "src": "README.uz.md",
+          "name": "qollanma",
+          "title": "Yig'ish bo'yicha qo'llanma",
+          "desc": "The same build guide in Uzbek."
+        },
+        {
+          "src": "docs/assembly.md",
+          "name": "assembly",
+          "title": "Assembly",
+          "desc": "Step by step soldering, in the order that's hardest to get wrong."
+        },
+        {
+          "src": "docs/troubleshooting.md",
+          "name": "troubleshooting",
+          "title": "When it doesn't work",
+          "desc": "The problems students actually hit, and fixes."
+        },
+        {
+          "src": "docs/hardware-reference.md",
+          "name": "hardware-reference",
+          "title": "Hardware reference",
+          "desc": "Netlist, design rules and fab notes for whoever makes rev C."
+        },
+        {
+          "src": "campv2/firmware/README.md",
+          "name": "firmware",
+          "title": "Firmware notes",
+          "desc": "What the Arduino sketch does and how to flash it."
+        },
+        {
+          "src": "CHANGELOG.md",
+          "name": "changelog",
+          "title": "Changelog",
+          "desc": "Rev A to rev B."
+        }
+      ],
+      "files": [
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/campv2/production/TechnoCamp_Circuitry_Class_PCB_B.zip",
+          "name": "CAMP-v2-gerbers-revB.zip",
+          "label": "Gerbers, rev B",
+          "desc": "Exactly what went to the fab."
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/campv2/production/bom.csv",
+          "name": "CAMP-v2-bom.csv",
+          "label": "Bill of materials",
+          "desc": "With LCSC part numbers."
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/campv2/production/positions.csv",
+          "name": "CAMP-v2-positions.csv",
+          "label": "Pick and place"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/campv2/firmware/CubeSat/CubeSat.ino",
+          "name": "CubeSat.ino",
+          "label": "Firmware (Arduino sketch)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/schematic.svg",
+          "name": "CAMP-v2-schematic.svg",
+          "label": "Schematic (SVG)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/camp-main/production/campv2-F_Cu.pdf",
+          "name": "CAMP-v2-front-copper.pdf",
+          "label": "Front copper plot (PDF)",
+          "desc": "For printing a toner-transfer mask if you etch it yourself."
+        }
+      ],
+      "links": [
+        {
+          "label": "Source on GitHub",
+          "url": "https://github.com/notazizelse/camp"
+        },
+        {
+          "label": "3D model (STEP, 13 MB)",
+          "url": "https://github.com/notazizelse/camp/blob/HEAD/production/3d.step"
+        }
+      ]
+    },
+    {
+      "slug": "glasses",
+      "title": "Glasses for dyslexic readers",
+      "year": "2026",
+      "status": "demo day 9 Oct",
+      "short": "Press a button on the glasses and they photograph the page and read it out loud.",
+      "lead": [
+        "Glasses with a button. Press it and a camera on the frame photographs the printed page in front of you, sends it to my server, and a reading screen reads it out loud with word-by-word highlighting. The reading screen also lets you change letter spacing, word spacing, size and font (Lexend, Atkinson Hyperlegible or OpenDyslexic), which is what actually helps a lot of dyslexic readers.",
+        "The glasses only take the photo. The server cleans it up with OpenCV and reads it with Tesseract in English, Russian and Uzbek. Parts cost about 190,000 sum."
+      ],
+      "live": {
+        "url": "https://glasses4dyslexic.notazizelse.xyz",
+        "label": "Reading screen (needs an access key)"
+      },
+      "repo": "notazizelse/glasses4dyslexic",
+      "private": true,
+      "root": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic",
+      "facts": [
+        [
+          "Camera",
+          "AI Thinker ESP32-CAM with flash"
+        ],
+        [
+          "Power",
+          "LiPo, TP4056 charger, MT3608 boost to 5 V"
+        ],
+        [
+          "Frame",
+          "3D printed in PETG, designed in Fusion 360"
+        ],
+        [
+          "Server",
+          "Python, Flask + waitress, OpenCV, Tesseract"
+        ],
+        [
+          "Languages",
+          "English, Russian, Uzbek"
+        ],
+        [
+          "Speech",
+          "The browser's Web Speech API"
+        ]
+      ],
+      "body": [
+        {
+          "h": "How it works",
+          "list": [
+            "Press the button. The ESP32-CAM on the frame takes a photo with the flash on.",
+            "It sends the photo over HTTPS, through a phone hotspot, to my server.",
+            "The server straightens and cleans the image with OpenCV and reads it with Tesseract.",
+            "The reading screen, on any phone or laptop, shows the text with your spacing and font, and reads it out loud word by word, into Bluetooth earbuds if you want."
+          ]
+        },
+        {
+          "h": "Backup plans",
+          "p": [
+            "If the venue has no mobile data, a laptop runs the same server and the glasses switch to it. If the glasses fail on stage, the reading screen has a Take photo button that sends a phone photo through the same path."
+          ]
+        },
+        {
+          "h": "Status",
+          "p": [
+            "The server is live and has read its first test photo. The frame and the pitch are being finished for demo day on Friday, 9 October 2026. The code is in a private repo for now because it has deploy details for the server in it."
+          ]
+        }
+      ],
+      "docs": [
+        {
+          "src": "docs/wiring.md",
+          "name": "wiring",
+          "title": "Wiring and power",
+          "desc": "Power chain, button and flash, battery life, charging."
+        },
+        {
+          "src": "docs/masterplan.md",
+          "name": "masterplan",
+          "title": "Masterplan",
+          "desc": "The plan for demo day, timeline, risks and backups."
+        },
+        {
+          "src": "cad/README.md",
+          "name": "frame",
+          "title": "3D-printed frame",
+          "desc": "Design notes and print log."
+        },
+        {
+          "src": "docs/pitch.md",
+          "name": "pitch",
+          "title": "Pitch outline"
+        },
+        {
+          "src": "tests/results.md",
+          "name": "ocr-results",
+          "title": "OCR accuracy log"
+        }
+      ],
+      "files": [
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic/firmware/glasses_cam/glasses_cam.ino",
+          "name": "glasses_cam.ino",
+          "label": "Firmware (ESP32-CAM sketch)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic/firmware/glasses_cam/secrets.example.h",
+          "name": "secrets.example.h",
+          "label": "secrets.example.h",
+          "desc": "Template for Wi-Fi and server settings."
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic/hardware/bom/smeta.xlsx",
+          "name": "glasses-bom.xlsx",
+          "label": "Parts and costs (smeta)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic/server/ocr.py",
+          "name": "ocr.py",
+          "label": "OCR pipeline (Python)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/glasses4dyslexic/server/static/reader.js",
+          "name": "reader.js",
+          "label": "Reading screen (JavaScript)"
+        }
+      ]
+    },
+    {
+      "slug": "haven",
+      "title": "Haven Tashkent",
+      "year": "2026",
+      "status": "14–15 November",
+      "short": "A free two-day game jam for teenagers in Tashkent that I'm organising.",
+      "lead": [
+        "Hack Club Haven is about 200 game jams in about 200 cities, all run by high schoolers on the same weekend. Teenagers aged 13 to 18 get two days to build a game and publish it on itch.io with the code on GitHub. It's free.",
+        "I'm the lead organiser of the Tashkent one, on 14–15 November 2026. We're a team of 14."
+      ],
+      "cover": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/social-media/profile-pictures/haven-tashkent-youtube-banner-2560x1440.png",
+        "alt": "Haven Tashkent banner with the Tashkent skyline and a hedgehog in a doppi",
+        "caption": "Our banner"
+      },
+      "facts": [
+        [
+          "When",
+          "14–15 November 2026, two days, no overnight"
+        ],
+        [
+          "Who",
+          "Ages 13–18, free"
+        ],
+        [
+          "Team",
+          "14 organisers"
+        ],
+        [
+          "Sponsors",
+          "PCBWay, Aseprite, .xyz"
+        ],
+        [
+          "Partners",
+          "Technovation Girls, REA"
+        ],
+        [
+          "Goal",
+          "About 180 signups and 100 people in the room"
+        ]
+      ],
+      "body": [
+        {
+          "h": "What I do",
+          "p": [
+            "I run the team, the venue search, sponsors and workshops. So far that's 85 personalised sponsor emails, a proposal kit for 70 sponsors in Uzbek, Russian and English, and three sponsors on board. Every organiser also had to ship their own small game first. Mine is [Jumpio](slug:jumpio)."
+          ]
+        },
+        {
+          "h": "Things I built for it",
+          "list": [
+            "[Haven Hub](slug:haven-hub), the team hub we run the whole event on. It's live at [haventash.xyz](https://haventash.xyz).",
+            "A [Telegram registration bot](slug:haven-bot) in three languages, with referrals and a leaderboard.",
+            "Die-cut [PCB name badges](slug:badges), made by PCBWay.",
+            "The posters, flyers and profile pictures below, drawn by my own Python scripts instead of an image generator."
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/social-media/poster-launch-feed-1080x1350.png",
+          "alt": "Launch poster",
+          "caption": "Launch poster for Instagram"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/posters-and-flyers/Flyer_En_fixed.png",
+          "alt": "English flyer",
+          "caption": "Flyer, English"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/posters-and-flyers/Flyer_Uz.png",
+          "alt": "Uzbek flyer",
+          "caption": "Flyer, Uzbek"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/posters-and-flyers/Flyer_Ru.png",
+          "alt": "Russian flyer",
+          "caption": "Flyer, Russian"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/social-media/hello-card-1080x1350.png",
+          "alt": "Hello card",
+          "caption": "First post"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent-team/social-media/profile-pictures/haven-tashkent-pfp-master-2048.png",
+          "alt": "Haven Tashkent profile picture",
+          "caption": "Profile picture"
+        }
+      ],
+      "links": [
+        {
+          "label": "haventash.xyz",
+          "url": "https://haventash.xyz"
+        },
+        {
+          "label": "Team files on GitHub (posters, flyers, PDFs)",
+          "url": "https://github.com/notazizelse/haven-tashkent-team"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://instagram.com/haven.tashkent.hackclub"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/haven_tashkent"
+        }
+      ],
+      "credit": "The Haven logo and hedgehog are Hack Club's."
+    },
+    {
+      "slug": "haven-hub",
+      "title": "Haven Hub",
+      "year": "2026",
+      "status": "live",
+      "short": "Team hub for Hack Club Haven organisers. Runs haventash.xyz.",
+      "lead": [
+        "A free team hub for Hack Club Haven organisers in any city. Every organiser gets their own task list with proof and reminders over Telegram or email, the leads get a dashboard, and the event gets a public page and an Apply page in English, Uzbek and Russian.",
+        "It runs on a Google Sheet you own, or on its own small server, which is how [haventash.xyz](https://haventash.xyz) runs. I shipped versions 4.0 to 5.1 in five days, because our team needed it."
+      ],
+      "app": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs",
+        "path": "app",
+        "open": "?demo=1&tour=1",
+        "label": "Try the demo (2-minute tour)"
+      },
+      "repo": "notazizelse/haven-hub",
+      "root": "C:/Users/admin/Documents/projects/personal/haven-hub",
+      "cover": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/overview.webp",
+        "alt": "Haven Hub admin overview",
+        "caption": "The lead's overview: what's overdue, what's blocked, signups and money from HQ. (Made-up team.)"
+      },
+      "facts": [
+        [
+          "Front end",
+          "Plain ES modules, no build step, no framework"
+        ],
+        [
+          "Back end",
+          "One Google Apps Script file, or Node 22 + SQLite"
+        ],
+        [
+          "Size",
+          "About 7,800 lines and 63 tests"
+        ],
+        [
+          "Licence",
+          "MIT"
+        ]
+      ],
+      "body": [
+        {
+          "h": "Why",
+          "p": [
+            "Organising Haven means 14 people and a lot of tasks with deadlines. So each person sees only their own tasks with the steps, the deadline and who to ask, presses Start, Done (with proof) or I'm blocked, and gets a reminder the evening before. The leads see everything."
+          ]
+        },
+        {
+          "h": "The demo",
+          "p": [
+            "The demo runs the real back end in your browser against a fake Google Sheet with a made-up team, so you can click everything and nothing gets sent anywhere."
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/tasks.webp",
+          "alt": "My tasks",
+          "caption": "An organiser's own tasks"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/review.webp",
+          "alt": "Review",
+          "caption": "Reviewing proof"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/timeline.webp",
+          "alt": "Timeline",
+          "caption": "Timeline"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/team.webp",
+          "alt": "Team",
+          "caption": "Team"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/person.webp",
+          "alt": "Person page",
+          "caption": "One person's page"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/sponsors.webp",
+          "alt": "Sponsors",
+          "caption": "Sponsors"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/applications.webp",
+          "alt": "Applications",
+          "caption": "Applications"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/files.webp",
+          "alt": "Files",
+          "caption": "Files"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/public.webp",
+          "alt": "Public event page",
+          "caption": "The public event page"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/signin.webp",
+          "alt": "Sign in",
+          "caption": "Sign in"
+        }
+      ],
+      "docs": [
+        {
+          "src": "setup.md",
+          "name": "setup",
+          "title": "Set up your Haven",
+          "desc": "About ten minutes, with a Google account."
+        },
+        {
+          "src": "ARCHITECTURE.md",
+          "name": "architecture",
+          "title": "Architecture",
+          "desc": "How the Sheet, the Apps Script and the website fit together."
+        },
+        {
+          "src": "CHANGELOG.md",
+          "name": "changelog",
+          "title": "Changelog"
+        },
+        {
+          "src": "SECURITY.md",
+          "name": "security",
+          "title": "Security"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/haven-hub"
+        },
+        {
+          "label": "haventash.xyz (our live hub)",
+          "url": "https://haventash.xyz"
+        }
+      ],
+      "credit": "Haven artwork is Hack Club's. The screenshots show a made-up team."
+    },
+    {
+      "slug": "badges",
+      "title": "Haven PCB badges",
+      "year": "2026",
+      "status": "ordering",
+      "short": "Die-cut name badges for Haven that are also circuit boards. Art generated in Python, made by PCBWay.",
+      "lead": [
+        "Name badges for Haven Tashkent, made as PCBs: lime-green HACKER for participants and brown ORGANIZER for the team. They're die-cut to the shape of the art, 55.9 × 59.1 mm, with a gold (ENIG) finish and a full-colour print on the front. PCBWay is sponsoring the manufacturing."
+      ],
+      "repo": "notazizelse/haven-pcb-badges",
+      "root": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges",
+      "cover": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/sheet-fronts.png",
+        "alt": "HACKER and ORGANIZER badge fronts",
+        "caption": "Both fronts, as mock-ups"
+      },
+      "facts": [
+        [
+          "Size",
+          "55.9 × 59.1 mm, die-cut outline"
+        ],
+        [
+          "Board",
+          "2 layers, ENIG gold"
+        ],
+        [
+          "Front",
+          "Full-colour UV print"
+        ],
+        [
+          "Tools",
+          "KiCad 10, Python (numpy, OpenCV, Pillow)"
+        ],
+        [
+          "Made by",
+          "PCBWay (sponsor)"
+        ]
+      ],
+      "body": [
+        {
+          "h": "How it's made",
+          "p": [
+            "One Python generator draws every layer from a single file of numbers: the board outline, the copper and mask art that gets imported into KiCad, the colour-print files PCBWay needs, and these mock-ups. If the outline changes by a millimetre, I change one number and regenerate everything instead of redrawing it."
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/participant-front.png",
+          "alt": "HACKER badge front",
+          "caption": "HACKER, front"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/organizer-front.png",
+          "alt": "ORGANIZER badge front",
+          "caption": "ORGANIZER, front"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/participant-back-pinned.png",
+          "alt": "HACKER badge back with pin",
+          "caption": "Back, with the pin"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/organizer-back-pinned.png",
+          "alt": "ORGANIZER badge back with pin",
+          "caption": "Organizer back"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/sheet-backs.png",
+          "alt": "Both backs",
+          "caption": "Both backs",
+          "full": true
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/sheet-planB.png",
+          "alt": "Plan B badges",
+          "caption": "Plan B design",
+          "full": true
+        }
+      ],
+      "docs": [
+        {
+          "src": "README.md",
+          "name": "readme",
+          "title": "Repo notes",
+          "desc": "Folder layout and the key numbers in KiCad."
+        }
+      ],
+      "files": [
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/1-kicad-import/badge-outline.svg",
+          "name": "badge-outline.svg",
+          "label": "Board outline (SVG)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/1-kicad-import/badge-outline.dxf",
+          "name": "badge-outline.dxf",
+          "label": "Board outline (DXF)"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/4-generator/design.py",
+          "name": "design.py",
+          "label": "design.py",
+          "desc": "All the layout numbers live here."
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub (KiCad project + generator)",
+          "url": "https://github.com/notazizelse/haven-pcb-badges"
+        }
+      ],
+      "credit": "The Haven logo and hedgehog are Hack Club's."
+    },
+    {
+      "slug": "orbita",
+      "title": "Orbita CanSat & IREC",
+      "year": "2026–27",
+      "status": "in progress",
+      "short": "My season as lead electronics engineer for the national CanSat and rocketry teams.",
+      "lead": [
+        "I was selected as lead electronics engineer for Uzbekistan's national team at the International Space Tournament \"Orbita\", where teams build a 3U CubeSat around a supplied kit, add their own payload, and fly it to the stratosphere on a balloon. I'm also on our IREC rocketry team, working on thrust control.",
+        "Our Orbita team won internationally last year, before I joined. That one is theirs. I'm the new lead."
+      ],
+      "facts": [
+        [
+          "Competition",
+          "International Space Tournament \"Orbita\""
+        ],
+        [
+          "Format",
+          "3U CubeSat, flown on a stratospheric balloon"
+        ],
+        [
+          "My role",
+          "Lead electronics engineer, via NazarX"
+        ],
+        [
+          "Also",
+          "IREC rocketry: thrust-control electronics"
+        ]
+      ],
+      "body": [
+        {
+          "h": "So far",
+          "p": [
+            "The season has just started. Before drawing anything I wrote research: a playbook on how Orbita works, a technician's study of possible missions, and a study on using the camera as a real instrument instead of a photo taker. Together they go through dozens of mission ideas, what's actually new, and how each would be built. They're below in full. The flight PCB is what I'm drawing now."
+          ]
+        }
+      ],
+      "docs": [
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita/docs/research/orbita-research-and-playbook.md",
+          "name": "playbook",
+          "title": "Research and playbook",
+          "desc": "What Orbita is, the rules, timelines and how to approach it.",
+          "repo": "notazizelse/orbita",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita26/ORBITA26_Technician_Mission_Research.md",
+          "name": "mission-research",
+          "title": "Technician's mission research",
+          "desc": "Mission concepts for the 2026 season, with novelty analysis.",
+          "repo": "notazizelse/Orbita26",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita26"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita26/ORBITA26_Camera_Payload_Research.md",
+          "name": "camera-payload",
+          "title": "Camera as an instrument",
+          "desc": "Payload ideas where the camera measures something.",
+          "repo": "notazizelse/Orbita26",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita26"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita/payload/experiment-design/ARC24-mission-spec.md",
+          "name": "arc24",
+          "title": "ARC24 mission spec",
+          "repo": "notazizelse/orbita",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita/payload/experiment-design/MAGSEP-mission-spec.md",
+          "name": "magsep",
+          "title": "MAGSEP mission spec",
+          "repo": "notazizelse/orbita",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/orbita/payload/experiment-design/biology-mission-ideas.md",
+          "name": "biology",
+          "title": "Biology mission ideas",
+          "repo": "notazizelse/orbita",
+          "root": "C:/Users/admin/Documents/projects/pcb/orbita"
+        }
+      ],
+      "links": [
+        {
+          "label": "2026 research on GitHub",
+          "url": "https://github.com/notazizelse/Orbita26"
+        },
+        {
+          "label": "Team workspace on GitHub",
+          "url": "https://github.com/notazizelse/orbita"
+        }
+      ]
+    },
+    {
+      "slug": "wit",
+      "title": "WIT stratospheric payload",
+      "year": "2026",
+      "status": "design package done",
+      "short": "A 3U balloon payload planned down to the byte: 7 missions, a 4-layer STM32F407 board, dual LoRa.",
+      "lead": [
+        "The design package for a 3U stratospheric balloon payload, for a Women in Tech Uzbekistan project. Seven science missions, one 4-layer board with an STM32F407, two LoRa radios, a Geiger counter, a power budget, a test plan and a 91-byte telemetry packet.",
+        "All of it was planned before opening KiCad. Every part has a written reason, and so does every part that wasn't picked."
+      ],
+      "repo": "notazizelse/WiT",
+      "root": "C:/Users/admin/Documents/projects/pcb/wit",
+      "facts": [
+        [
+          "Envelope",
+          "3U, 100 × 100 × 300 mm"
+        ],
+        [
+          "Board",
+          "4 layers, ENIG, about 90 × 90 mm"
+        ],
+        [
+          "MCU",
+          "STM32F407VET6"
+        ],
+        [
+          "Radios",
+          "MicoAir LR900-A and Ebyte E22-900T22S, on separate UARTs"
+        ],
+        [
+          "Power",
+          "4 × Energizer L91 lithium AA, rated to −40 °C"
+        ],
+        [
+          "Radiation",
+          "CAJOE board with an SBM-20 tube"
+        ],
+        [
+          "Cost",
+          "About $211 per assembled board, about $2,300 for the whole project"
+        ]
+      ],
+      "body": [
+        {
+          "h": "The seven missions",
+          "list": [
+            "Upper-air profile over Uzbekistan",
+            "Air quality in the boundary layer over Tashkent",
+            "Cosmic radiation dose from the ground to burst",
+            "UV irradiance and ozone against altitude",
+            "GNSS availability and accuracy against altitude",
+            "LoRa link budget against range and altitude",
+            "How ordinary memory chips survive the flight"
+          ]
+        },
+        {
+          "h": "What's next",
+          "p": [
+            "Schematic capture, then the 4-layer layout. Long-lead parts get ordered in parallel so nothing waits on shipping."
+          ]
+        }
+      ],
+      "docs": [
+        {
+          "src": "assets/README.md",
+          "name": "overview",
+          "title": "Overview and decisions",
+          "desc": "Everything decided so far, the costs and what's blocking."
+        },
+        {
+          "src": "assets/missions/mission_definitions.md",
+          "name": "missions",
+          "title": "Mission definitions",
+          "desc": "Hypothesis, expected graph, how it could fail, for each mission."
+        },
+        {
+          "src": "assets/bom/BOM_notes.md",
+          "name": "bom-notes",
+          "title": "Why each part",
+          "desc": "And why not the alternatives."
+        },
+        {
+          "src": "assets/bom/COMPONENT_CHANGES_v2.md",
+          "name": "bom-v2",
+          "title": "Parts list v2 changes"
+        },
+        {
+          "src": "assets/pcb/stackup_and_layout.md",
+          "name": "stackup",
+          "title": "Stackup and layout",
+          "desc": "4-layer stackup, floorplan, grounding, RF routing."
+        },
+        {
+          "src": "assets/firmware/firmware_architecture.md",
+          "name": "firmware",
+          "title": "Firmware architecture"
+        },
+        {
+          "src": "assets/firmware/telemetry_packet_spec.md",
+          "name": "telemetry",
+          "title": "Telemetry packet",
+          "desc": "91 bytes, the single source of truth."
+        },
+        {
+          "src": "assets/mechanical/mechanical_constraints.md",
+          "name": "mechanical",
+          "title": "Mechanical constraints"
+        },
+        {
+          "src": "assets/testing/test_plan.md",
+          "name": "test-plan",
+          "title": "Test plan",
+          "desc": "From before first power to flight day."
+        },
+        {
+          "src": "assets/procurement/suppliers.md",
+          "name": "suppliers",
+          "title": "Where to buy everything",
+          "desc": "Tashkent shops, distributors, AliExpress, JLCPCB."
+        },
+        {
+          "src": "assets/learning/pcb_learning_path.md",
+          "name": "learning",
+          "title": "My 2-layer to 4-layer learning path"
+        }
+      ],
+      "files": [
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/BOM_full.csv",
+          "name": "WIT-BOM-full.csv",
+          "label": "Full BOM",
+          "desc": "Every part, 22 columns."
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/BOM_pcb_jlcpcb.csv",
+          "name": "WIT-BOM-jlcpcb.csv",
+          "label": "BOM for JLCPCB assembly"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/BOM_handsolder.csv",
+          "name": "WIT-BOM-handsolder.csv",
+          "label": "Hand-solder list"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/BOM_external_system.csv",
+          "name": "WIT-BOM-external.csv",
+          "label": "Everything off the board",
+          "desc": "Battery, antennas, structure, ground station, recovery."
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/BOM_tools_test_equipment.csv",
+          "name": "WIT-tools.csv",
+          "label": "Tools and test equipment"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/power/power_budget.csv",
+          "name": "WIT-power-budget.csv",
+          "label": "Power budget"
+        },
+        {
+          "src": "C:/Users/admin/Documents/projects/pcb/wit/assets/bom/WIT_components.xlsx",
+          "name": "WIT-components.xlsx",
+          "label": "Component sheet (Excel)"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/WiT"
+        }
+      ]
+    },
+    {
+      "slug": "karatefc",
+      "title": "KarateFC",
+      "year": "2026",
+      "status": "planning",
+      "short": "A Betaflight flight controller for drones that are supposed to crash.",
+      "lead": [
+        "My next flight controller, in the class of the SpeedyBee F405 V3: STM32F405, USB-C, Betaflight-compatible. It's for fast research drones that get destroyed on purpose at the end of each test.",
+        "That changes the whole design. Normal FPV boards are built to survive a crash and get repaired. Here the board dies anyway, so what matters is cost per unit, how fast I can build a batch, and that it stays reliable right up until impact."
+      ],
+      "repo": "notazizelse/KarateFC",
+      "root": "C:/Users/admin/Documents/projects/pcb/KarateFC",
+      "facts": [
+        [
+          "MCU",
+          "STM32F405"
+        ],
+        [
+          "Firmware",
+          "Betaflight-compatible"
+        ],
+        [
+          "For",
+          "Fast, single-use research drones"
+        ],
+        [
+          "Tools",
+          "KiCad 10"
+        ],
+        [
+          "Funding",
+          "Hack Club Forge (planned)"
+        ],
+        [
+          "Started",
+          "22 September 2026"
+        ]
+      ],
+      "body": [
+        {
+          "h": "First decision",
+          "p": [
+            "A separate 4-in-1 ESC stack, or the ESCs on the flight controller (AIO)? For drones that get thrown away, fewer boards and fewer connectors usually wins. At Unique Dynamic I wrote a flight controller's firmware from zero. This time I'm using Betaflight so the effort goes into the hardware."
+          ]
+        }
+      ],
+      "docs": [
+        {
+          "src": "assets/PROJECT_PLAN.md",
+          "name": "plan",
+          "title": "Project plan",
+          "desc": "Spec, the design principle, the ESC decision, deadlines."
+        },
+        {
+          "src": "assets/RESOURCES.md",
+          "name": "resources",
+          "title": "Resources",
+          "desc": "Reference designs, datasheets and guides I'm using."
+        },
+        {
+          "src": "Journal.md",
+          "name": "journal",
+          "title": "Journal"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/KarateFC"
+        }
+      ]
+    },
+    {
+      "slug": "vocabio",
+      "title": "Vocabio",
+      "year": "2026",
+      "status": "v1.1",
+      "short": "The SAT vocabulary app I made from my own Anki deck. Works offline.",
+      "lead": [
+        "I was studying the College Panda's 400 SAT words in Anki and wanted something that could also read the words to me. So I took my Anki export, kept all my progress (1,424 reviews), rewrote all 400 definitions to be shorter (42% on average) and gave every word an example sentence and synonyms.",
+        "It has an Anki-style review mode and a hands-free listen mode. It works offline, installs on an iPhone from Safari, and there's a Windows app. Progress syncs between them."
+      ],
+      "app": {
+        "src": "C:/Users/admin/Documents/projects/code/vocabio/app",
+        "path": "app",
+        "label": "Open Vocabio",
+        "exclude": [
+          "_headers"
+        ]
+      },
+      "repo": "notazizelse/vocabio",
+      "root": "C:/Users/admin/Documents/projects/code/vocabio",
+      "cover": {
+        "src": "content/shots/vocabio-home.png",
+        "alt": "Vocabio home screen with mastery and the weakest words",
+        "caption": "Home: overall mastery, what's due, and the words I keep getting wrong"
+      },
+      "facts": [
+        [
+          "Words",
+          "400, from The College Panda"
+        ],
+        [
+          "Starts from",
+          "My Anki progress: intervals, ease, lapses"
+        ],
+        [
+          "Runs as",
+          "Website (offline), iPhone home-screen app, Windows app"
+        ],
+        [
+          "Built with",
+          "Plain HTML/CSS/JS, service worker, Electron, Cloudflare Workers + KV for sync"
+        ]
+      ],
+      "gallery": [
+        {
+          "src": "content/shots/vocabio-review.png",
+          "alt": "Review mode",
+          "caption": "Review mode"
+        },
+        {
+          "src": "content/shots/vocabio-listen.png",
+          "alt": "Listen mode",
+          "caption": "Listen mode"
+        }
+      ],
+      "docs": [
+        {
+          "src": "README.md",
+          "name": "readme",
+          "title": "README",
+          "desc": "How the Anki data is used, the two modes, sync, building."
+        }
+      ],
+      "files": [
+        {
+          "src": "C:/Users/admin/Documents/projects/code/vocabio/dist/vocabio-web.zip",
+          "name": "vocabio-web.zip",
+          "label": "Offline web version (zip)"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/vocabio"
+        },
+        {
+          "label": "Windows app (installer + portable)",
+          "url": "https://github.com/notazizelse/vocabio/releases/latest"
+        }
+      ]
+    },
+    {
+      "slug": "kitchenqueue",
+      "title": "Kitchen Queue",
+      "year": "2026",
+      "status": "demo",
+      "short": "A camera counts the canteen line so students know when to go.",
+      "lead": [
+        "Our canteen line is long at lunch and nobody knows whether to go now or in ten minutes. Kitchen Queue uses a camera that's already there, counts the people in line with computer vision, and shows a live count, a wait estimate and a \"typical for this weekday\" chart that tells you whether waiting helps.",
+        "Only one number leaves the building every 10 seconds. The live picture is optional and stays behind an access code. The demo uses made-up numbers. The real version is meant for the school's cameras, so its code is private."
+      ],
+      "app": {
+        "src": "C:/Users/admin/Documents/projects/code/camera/docs/demo.html",
+        "path": "demo",
+        "label": "Open the demo"
+      },
+      "cover": {
+        "src": "content/shots/kitchenqueue.png",
+        "alt": "Kitchen Queue demo showing 27 people in line and a chart of the school day",
+        "caption": "The demo at the lunch bell"
+      },
+      "facts": [
+        [
+          "Counting",
+          "YOLO, MobileNet-SSD or HOG with OpenCV, on whatever PC sees the camera"
+        ],
+        [
+          "Server",
+          "Python standard library, live updates over Server-Sent Events"
+        ],
+        [
+          "Cameras",
+          "Can use existing Hikvision CCTV"
+        ],
+        [
+          "Also",
+          "An ESP32 uplink sketch for places without a PC"
+        ]
+      ],
+      "body": [
+        {
+          "h": "How it works",
+          "p": [
+            "A small counter script reads the camera stream, counts people in the queue area and posts a number to the server. Everything only dials out, so the school network needs no changes and nothing is exposed. The server keeps 28 days of counts, which is what makes the weekday forecast work."
+          ]
+        }
+      ],
+      "docs": [
+        {
+          "src": "C:/Users/admin/Documents/projects/code/camera/docs/architecture.md",
+          "name": "architecture",
+          "title": "Architecture",
+          "desc": "Camera options, getting data out of a school network, privacy."
+        }
+      ]
+    },
+    {
+      "slug": "jumpio",
+      "title": "Jumpio",
+      "year": "2026",
+      "status": "playable",
+      "short": "My first Godot game. A frog jumps between islands. That's it XD",
+      "lead": [
+        "Every Haven organiser has to ship a small game first, so I made Jumpio in Godot 4: a frog with animations hopping between islands until it finds the right path. There are no enemies yet. The plan was to follow a five-hour Mario tutorial, I realised I couldn't finish it, and made my own thing instead (so now I waste your time XD)."
+      ],
+      "app": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent/jumpio/jumpio/production",
+        "path": "play",
+        "label": "Play it in the browser (38 MB)",
+        "exclude": [
+          "*.import"
+        ]
+      },
+      "repo": "notazizelse/jumpio",
+      "cover": {
+        "src": "C:/Users/admin/Documents/projects/personal/haven-tashkent/jumpio/jumpio/assets/win_screen.jpg",
+        "alt": "Pixel trophy above the words YOU WIN!",
+        "caption": "What you see if you make it"
+      },
+      "facts": [
+        [
+          "Engine",
+          "Godot 4.7"
+        ],
+        [
+          "Made for",
+          "Hack Club Haven Jumpstart"
+        ],
+        [
+          "Shipped",
+          "21 September 2026"
+        ]
+      ],
+      "links": [
+        {
+          "label": "itch.io",
+          "url": "https://notazizelse.itch.io/jumpio"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/jumpio"
+        }
+      ]
+    },
+    {
+      "slug": "complexio",
+      "small": true,
+      "title": "Complexio",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "A line-following robot on my own STM32 board.",
+      "lead": [
+        "A line follower built around my own board instead of an Arduino: an STM32 with an array of KTIR0711S reflective sensors, an MPU-6000 IMU, an HC-05 Bluetooth module, a small SPI OLED and an AT24C01 EEPROM. It's powered through an LM2596 buck converter."
+      ],
+      "repo": "notazizelse/complexio",
+      "facts": [
+        [
+          "MCU",
+          "STM32 (CubeMX project, Makefile build)"
+        ],
+        [
+          "Sensors",
+          "KTIR0711S array, MPU-6000"
+        ],
+        [
+          "Also",
+          "HC-05 Bluetooth, SPI OLED, AT24C01 EEPROM"
+        ],
+        [
+          "PCB",
+          "KiCad, with separate sheets for the IMU, power and sensor array"
+        ]
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/complexio"
+        }
+      ]
+    },
+    {
+      "slug": "macropad",
+      "small": true,
+      "title": "Macropad",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "My macro pad for Hack Club: XIAO RP2040, OLED, RGB, KMK firmware.",
+      "lead": [
+        "A small programmable keyboard I made for Hack Club's macropad program. It runs on a Seeed XIAO RP2040 with KMK, a Python-based keyboard firmware, and has an OLED and RGB LEDs."
+      ],
+      "repo": "notazizelse/macropad",
+      "readme": "content/repos/macropad/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/macropad"
+        }
+      ]
+    },
+    {
+      "slug": "limitio",
+      "small": true,
+      "title": "LimitIO",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "Screen Time for Windows: daily limits per website and per app.",
+      "lead": [
+        "A Windows app that puts real daily time limits on specific websites and apps, enforced by a background service that a normal account can't just close. It's the same idea as iPhone Screen Time, adapted to what Windows actually allows, and the README is honest about what it can't stop."
+      ],
+      "repo": "notazizelse/limitio",
+      "readme": "content/repos/limitio/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/limitio"
+        }
+      ]
+    },
+    {
+      "slug": "gps-tracker",
+      "small": true,
+      "title": "GPS Tracker",
+      "year": "2025",
+      "status": "on GitHub",
+      "short": "Arduino + GPS module + Python that draws where you've been on a live map.",
+      "lead": [
+        "An Arduino reads a BN-280 GPS module, and a Python script parses the NMEA sentences and keeps a live map of the route updated."
+      ],
+      "repo": "notazizelse/GPS-Tracker",
+      "readme": "content/repos/GPS-Tracker/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/GPS-Tracker"
+        }
+      ]
+    },
+    {
+      "slug": "haven-bot",
+      "small": true,
+      "title": "Haven registration bot",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "Telegram bot for Haven Tashkent signups in Uzbek, Russian and English.",
+      "lead": [
+        "The Telegram bot people use to register for [Haven Tashkent](slug:haven). It works in Uzbek, Russian and English, has referral links with reward tiers and a leaderboard, and gives the organisers stats, broadcasts, CSV export and check-in on the day."
+      ],
+      "repo": "notazizelse/haven-tashkent_bot",
+      "readme": "content/repos/haven-tashkent_bot/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/haven-tashkent_bot"
+        },
+        {
+          "label": "The bot on Telegram",
+          "url": "https://t.me/haven_tashkent_bot"
+        }
+      ]
+    },
+    {
+      "slug": "lesson-descriptor",
+      "small": true,
+      "title": "Lesson descriptor",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "A script that turns a lesson plan into a clean PDF description.",
+      "lead": [
+        "A small Python tool to generate a PDF that describes a lesson."
+      ],
+      "repo": "notazizelse/lesson_descriptor",
+      "readme": "content/repos/lesson_descriptor/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/lesson_descriptor"
+        }
+      ]
+    },
+    {
+      "slug": "synchronizer",
+      "small": true,
+      "title": "Synchronizer",
+      "year": "2025",
+      "status": "on GitHub",
+      "short": "Moves daily article reviews from a Telegram channel to Google Docs and a website.",
+      "lead": [
+        "A desktop app with a small Tkinter interface that fetches posts from a Telegram channel, saves them to Google Docs, publishes them to a website, finds missing days, and cleans up tagged messages."
+      ],
+      "repo": "notazizelse/Synchronizer",
+      "readme": "content/repos/Synchronizer/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/Synchronizer"
+        }
+      ]
+    },
+    {
+      "slug": "anki-listen",
+      "small": true,
+      "title": "Anki Listen Mode",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "Anki add-on that reads your cards out loud and moves on by itself.",
+      "lead": [
+        "The open-source spin-off of [Vocabio](slug:vocabio)'s listen mode, as an Anki add-on. It reads each card aloud with Anki's built-in text-to-speech and moves on by itself, and it never writes to your collection."
+      ],
+      "repo": "notazizelse/anki-listen-mode",
+      "readme": "content/repos/anki-listen-mode/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/anki-listen-mode"
+        }
+      ]
+    },
+    {
+      "slug": "stm32-fix",
+      "small": true,
+      "title": "STM32 Homebrew fix",
+      "year": "2026",
+      "status": "on GitHub",
+      "short": "Fixes the two usual build failures with Homebrew's ARM GCC on macOS.",
+      "lead": [
+        "If you build CubeMX projects in VS Code on a Mac with Homebrew's arm-none-eabi-gcc, two things usually break: the toolchain has no newlib, and the Makefile points at a gcc without a sysroot. This script fixes both."
+      ],
+      "repo": "notazizelse/STM32_homebrew_fix_script_for_mac",
+      "readme": "content/repos/STM32_homebrew_fix_script_for_mac/README.md",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/notazizelse/STM32_homebrew_fix_script_for_mac"
+        }
+      ]
+    }
+  ]
+}

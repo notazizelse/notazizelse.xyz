@@ -1,0 +1,81 @@
+{
+  "name": "Azizbek Numonjonov",
+  "handle": "notazizelse",
+  "domain": "notazizelse.xyz",
+  "email": "notazizelse@gmail.com",
+  "description": "Azizbek Numonjonov (notazizelse). I make circuit boards, flight controllers and CanSat electronics in Tashkent, Uzbekistan.",
+  "updated": "October 2026",
+
+  "photo": {
+    "src": "C:/Users/admin/Pictures/pfp.jpg",
+    "name": "me-workshop",
+    "alt": "Me in a hard hat and work jacket, giving a thumbs up next to a laser cutter",
+    "caption": "me and a laser cutter"
+  },
+
+  "intro": [
+    "Hi, I'm Azizbek. I'm in grade 12 at Tashkent Presidential School in Uzbekistan, and mostly I make circuit boards: flight controllers, CanSat electronics, and boards for teaching other kids how to make circuit boards.",
+    "I started with LEGO, moved to Arduino, then spent two internships drawing PCBs for real products. These days I'm on the national CanSat and rocketry teams, I teach, and I'm organising a game jam.",
+    "Every project on this site has its own subdomain, like [camp.notazizelse.xyz](slug:camp). The code for most of them is on [GitHub](https://github.com/notazizelse)."
+  ],
+
+  "now": [
+    "Lead electronics engineer for Uzbekistan's national [Orbita CanSat and IREC rocketry teams](slug:orbita). Right now that means drawing the flight PCB.",
+    "Organising [Hack Club Haven Tashkent](slug:haven), a free two-day game jam for teenagers on 14–15 November. We're a team of 14, and PCBWay, Aseprite and .xyz are sponsoring.",
+    "Teaching 20 students at Turin Polytechnic University to draw a schematic, lay out a CubeSat board and write its firmware.",
+    "Helping pitch sponsors for 50 FTC kits for Uzbek schools, so more than a couple of teams from here can compete abroad."
+  ],
+
+  "strip": [
+    {"slug": "camp", "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/pcb-top.png", "name": "strip-camp", "alt": "Top side of the CAMP v2 board", "caption": "CAMP v2, the Technocamp board"},
+    {"slug": "badges", "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/participant-front.png", "name": "strip-badge", "alt": "The lime-green HACKER PCB badge", "caption": "a Haven PCB badge"},
+    {"slug": "haven-hub", "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/overview.webp", "name": "strip-hub", "alt": "Haven Hub's admin overview page", "caption": "Haven Hub (demo team)"}
+  ],
+
+  "about": [
+    "I got into Tashkent Presidential School in 6th grade and started competitive programming the same year, in C++. My best result was 4th in the regional round of the informatics olympiad.",
+    "Then I found LEGO robotics. My first sumo robot got horribly humbled at its first competition. My biggest LEGO build was a fidget-spinner factory, an actual little assembly line.",
+    "After that I moved to Arduino. I cut sumo and line-follower chassis out of PVC foam board by hand and won 1st place at the national robotics championship. Later I drew the same chassis in Fusion 360 and sold it online as a national champion design ^-^",
+    "In summer 2025 I interned at Intelligent Software, assisting the lead electrical engineer on a laser marksmanship trainer that fires no ammunition. I worked on the beam collimation and the PCB. That's where I met STM32, and that internship changed how I think about engineering more than anything before it.",
+    "My next internship was at Unique Dynamic, an agricultural tech company. Over about ten months I built a flight controller from scratch (schematic, PCB and firmware) for a drone that sprays pesticide evenly over a field. Getting the spread even was the hard part.",
+    "On the side I do CAD. I designed a jet engine in SolidWorks and printed a small version, reverse-engineered a car fender from a 3D scan (got paid about $100 for that one), and sell models on Cults3D. Nobody bought my Harry Potter model, smh.",
+    "With NazarX, an FTC team, I was the CAD engineer for the turret and the compression system that feeds it. I replaced the HD Hex motors with servos and learned what tolerances actually mean. The team got 1st seed at Almaty Tech Cup XII and made the finals there and in Sanya, China. I also led our FIRST Global Challenge team for a season, which was mostly splitting up tasks and keeping seniors who were busy with uni applications on schedule.",
+    "Technocamp 2026 is the biggest thing I've done. I was the lead electronics teacher at a 200-student camp in the mountains, for kids aged 12 to 17, most of them from low-income families. Every student designed a PCB and etched it themselves. I wrote the curriculum, the chemical safety rules and the budget, and designed [the board we used](slug:camp). Right after that I taught at a five-day STEM camp with the U.S. Embassy, and we showed our FTC robot and CanSat work to the President of Uzbekistan.",
+    "Long term I want to bring FIRST-style competitions to Uzbekistan, and after that TEKNOFEST. Right now only a couple of teams from here compete seriously abroad, and I'd like that to change."
+  ],
+
+  "work": [
+    {"when": "2026–27", "what": "Lead electronics engineer", "where": "Uzbekistan national Orbita CanSat and IREC rocketry teams, via NazarX"},
+    {"when": "2026–27", "what": "PCB design instructor", "where": "Turin Polytechnic University in Tashkent, 20 students"},
+    {"when": "Sep–Nov 2026", "what": "Lead organiser", "where": "Hack Club Haven Tashkent"},
+    {"when": "Summer 2026", "what": "Lead electronics teacher", "where": "Technocamp 2026, 200 students, with the Robotics & Engineering Association"},
+    {"when": "Summer 2026", "what": "Lead teacher", "where": "STEM camp with the U.S. Embassy in Uzbekistan"},
+    {"when": "2025–26", "what": "Embedded systems intern", "where": "Unique Dynamic. Flight controller from scratch, about 10 months"},
+    {"when": "2025–26", "what": "CAD engineer, turret and compression", "where": "NazarX FTC team"},
+    {"when": "2025–26", "what": "Team leader", "where": "Uzbekistan FIRST Global Challenge team"},
+    {"when": "Summer 2025", "what": "Engineering intern, optics and PCB", "where": "Intelligent Software"},
+    {"when": "since 2024", "what": "Selling CAD models", "where": "Cults3D. SolidWorks, Fusion 360, Blender"}
+  ],
+
+  "honors": [
+    {"when": "China", "text": "1st place, International AI Robotics Competition (team)"},
+    {"when": "China", "text": "Finalist alliance at the Sanya FTC off-season event, picked from the 25th seed (team)"},
+    {"when": "Almaty", "text": "1st qualifying seed and finalist alliance, Almaty Tech Cup XII, FTC (team)"},
+    {"when": "", "text": "9th qualifying seed, Lepsi Fest, FTC (team)"},
+    {"when": "National", "text": "1st place, National Robotics Championship, autonomous sumo"},
+    {"when": "National", "text": "Showed our robotics and CanSat projects to the President of Uzbekistan"},
+    {"when": "National", "text": "Member of Uzbekistan's FIRST Global Challenge team"},
+    {"when": "2024", "text": "1st place in drone racing at the Digital Generation IT camp (the prize was a TV)"},
+    {"when": "2023", "text": "3rd place, Digital Generation hackathon"},
+    {"when": "Regional", "text": "4th place, regional round of the National Olympiad in Informatics"},
+    {"when": "2025", "text": "CS50P certificate"}
+  ],
+
+  "other": [
+    "Outside of engineering I'm a regional swimming champion, a karate champion in Samarkand, and national runner-up in knife throwing (it's a precision target sport, I promise).",
+    "School: Tashkent Presidential School since grade 6. Cambridge AS results were Maths 98/100, Computer Science A and Physics A, and I got 1440 on the SAT and 8.0 on IELTS. Next I want to study electrical or mechanical engineering. I speak Uzbek, English and Russian.",
+    "Smaller things on GitHub: [limitio](https://github.com/notazizelse/limitio) (a screen-time app in C#), [GPS-Tracker](https://github.com/notazizelse/GPS-Tracker), [complexio](https://github.com/notazizelse/complexio) (line follower), my [macropad](https://github.com/notazizelse/macropad) for Hack Club, the [Haven registration bot](https://github.com/notazizelse/haven-tashkent_bot), a [Homebrew STM32 fix](https://github.com/notazizelse/STM32_homebrew_fix_script_for_mac) for macOS, and an Anki add-on that reads your cards out loud."
+  ],
+
+  "contact": "Email is best: [notazizelse@gmail.com](mailto:notazizelse@gmail.com). I'm notazizelse on [GitHub](https://github.com/notazizelse), [itch.io](https://notazizelse.itch.io) and [Chess.com](https://www.chess.com/member/notazizelse), [@azizelse_0](https://t.me/azizelse_0) on Telegram and [@azizbek_0v2](https://instagram.com/azizbek_0v2) on Instagram. If you want to sponsor Haven, need a PCB, or just want to talk flight controllers, write to me."
+}
