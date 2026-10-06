@@ -1,3 +1,17 @@
+// Click-to-load demos on project pages (big apps don't load until asked).
+(function () {
+  document.querySelectorAll('button[data-embed]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = b.getAttribute('data-embed');
+      f.title = (b.getAttribute('data-title') || 'Demo') + ', running live';
+      f.setAttribute('allow', 'autoplay; fullscreen; gamepad');
+      b.replaceWith(f);
+      f.focus();
+    });
+  });
+})();
+
 // The 16x2 LCD on the home page. Characters are real dot-matrix glyphs: each one is drawn in
 // Departure Mono at its native 11 px size, sampled pixel by pixel, and every pixel becomes an LCD dot.
 (function () {

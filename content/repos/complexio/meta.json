@@ -5,19 +5,36 @@
   "default_branch": "main",
   "created_at": "2026-03-21T14:26:20Z",
   "pushed_at": "2026-03-25T18:24:59Z",
-  "private": false,
-  "languages": [
-    "C",
-    "Assembly",
-    "C++",
-    "Linker Script",
-    "Makefile"
-  ],
+  "stargazers_count": 3,
+  "license": "MIT",
+  "languages": {
+    "C": 55888260,
+    "Assembly": 1221853,
+    "C++": 47694,
+    "Linker Script": 13550,
+    "Makefile": 6410
+  },
   "files": [
-    "Assets",
-    "Firmware",
-    "LICENSE.md",
-    "PCB",
-    "README.md"
-  ]
+    [
+      "Assets",
+      "dir"
+    ],
+    [
+      "Firmware",
+      "dir"
+    ],
+    [
+      "PCB",
+      "dir"
+    ],
+    [
+      "LICENSE.md",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ]
+  ],
+  "commits": 7
 }

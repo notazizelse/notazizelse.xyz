@@ -5,15 +5,26 @@
   "default_branch": "main",
   "created_at": "2026-09-21T08:54:10Z",
   "pushed_at": "2026-09-26T06:38:34Z",
-  "private": false,
-  "languages": [
-    "JavaScript",
-    "HTML",
-    "GDScript"
-  ],
+  "stargazers_count": 0,
+  "license": null,
+  "languages": {
+    "JavaScript": 10271,
+    "HTML": 5436,
+    "GDScript": 911
+  },
   "files": [
-    "MIT License.md",
-    "README.md",
-    "jumpio"
-  ]
+    [
+      "jumpio",
+      "dir"
+    ],
+    [
+      "MIT License.md",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ]
+  ],
+  "commits": 5
 }

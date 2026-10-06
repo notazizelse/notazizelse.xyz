@@ -1,0 +1,90 @@
+{
+  "description": "Free team hub for Hack Club Haven organizers: tasks with proof, admin dashboard, reminders, public event page. Runs on a Google Sheet you own.",
+  "language": "JavaScript",
+  "html_url": "https://github.com/notazizelse/haven-hub",
+  "default_branch": "main",
+  "created_at": "2026-09-30T04:42:29Z",
+  "pushed_at": "2026-10-04T10:23:35Z",
+  "stargazers_count": 0,
+  "license": "NOASSERTION",
+  "languages": {
+    "JavaScript": 441313,
+    "Shell": 10535,
+    "Python": 857
+  },
+  "files": [
+    [
+      ".github",
+      "dir"
+    ],
+    [
+      "apps-script",
+      "dir"
+    ],
+    [
+      "dev",
+      "dir"
+    ],
+    [
+      "docs",
+      "dir"
+    ],
+    [
+      "server",
+      "dir"
+    ],
+    [
+      "tests",
+      "dir"
+    ],
+    [
+      "tools",
+      "dir"
+    ],
+    [
+      ".gitattributes",
+      "file"
+    ],
+    [
+      ".gitignore",
+      "file"
+    ],
+    [
+      "ARCHITECTURE.md",
+      "file"
+    ],
+    [
+      "CHANGELOG.md",
+      "file"
+    ],
+    [
+      "CONTRIBUTING.md",
+      "file"
+    ],
+    [
+      "LICENSE",
+      "file"
+    ],
+    [
+      "package-lock.json",
+      "file"
+    ],
+    [
+      "package.json",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ],
+    [
+      "SECURITY.md",
+      "file"
+    ],
+    [
+      "setup.md",
+      "file"
+    ]
+  ],
+  "commits": 27
+}

@@ -5,19 +5,48 @@
   "default_branch": "main",
   "created_at": "2026-09-16T13:03:02Z",
   "pushed_at": "2026-09-16T13:27:42Z",
-  "private": false,
-  "languages": [
-    "Python"
-  ],
+  "stargazers_count": 0,
+  "license": "MIT",
+  "languages": {
+    "Python": 46482
+  },
   "files": [
-    ".gitignore",
-    "LICENSE.md",
-    "README.md",
-    "bot.py",
-    "config.py",
-    "db.py",
-    "handlers",
-    "locales.py",
-    "requirements.txt"
-  ]
+    [
+      "handlers",
+      "dir"
+    ],
+    [
+      ".gitignore",
+      "file"
+    ],
+    [
+      "bot.py",
+      "file"
+    ],
+    [
+      "config.py",
+      "file"
+    ],
+    [
+      "db.py",
+      "file"
+    ],
+    [
+      "LICENSE.md",
+      "file"
+    ],
+    [
+      "locales.py",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ],
+    [
+      "requirements.txt",
+      "file"
+    ]
+  ],
+  "commits": 2
 }

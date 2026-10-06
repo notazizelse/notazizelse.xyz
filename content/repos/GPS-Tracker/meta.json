@@ -5,18 +5,41 @@
   "default_branch": "main",
   "created_at": "2025-03-25T07:19:05Z",
   "pushed_at": "2025-03-25T07:47:48Z",
-  "private": false,
-  "languages": [
-    "Python",
-    "C++"
-  ],
+  "stargazers_count": 4,
+  "license": "MIT",
+  "languages": {
+    "Python": 2032,
+    "C++": 264
+  },
   "files": [
-    ".gitignore",
-    "LICENSE",
-    "README.md",
-    "connections.png",
-    "main.py",
-    "mapvis-demo.mp4",
-    "parsing_data_from_gps.ino"
-  ]
+    [
+      ".gitignore",
+      "file"
+    ],
+    [
+      "connections.png",
+      "file"
+    ],
+    [
+      "LICENSE",
+      "file"
+    ],
+    [
+      "main.py",
+      "file"
+    ],
+    [
+      "mapvis-demo.mp4",
+      "file"
+    ],
+    [
+      "parsing_data_from_gps.ino",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ]
+  ],
+  "commits": 5
 }

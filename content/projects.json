@@ -186,6 +186,25 @@
           "label": "3D model (STEP, 13 MB)",
           "url": "https://github.com/notazizelse/camp/blob/HEAD/production/3d.step"
         }
+      ],
+      "stage": 5,
+      "flow": [
+        [
+          "inputs",
+          "DHT11, MQ-7, 3 buttons"
+        ],
+        [
+          "brain",
+          "Arduino Nano"
+        ],
+        [
+          "outputs",
+          "16×2 LCD, 2 RGB LEDs"
+        ],
+        [
+          "link",
+          "USB serial"
+        ]
       ]
     },
     {
@@ -316,7 +335,34 @@
         "src": "static/art/glasses.svg",
         "alt": "Drawing of the glasses: ESP32-CAM and button on the right hinge, battery on the left temple",
         "caption": "How the parts sit on the frame, and where the photo goes."
-      }
+      },
+      "stage": 3,
+      "flow": [
+        [
+          "input",
+          "button"
+        ],
+        [
+          "camera",
+          "ESP32-CAM + flash"
+        ],
+        [
+          "network",
+          "HTTPS via hotspot"
+        ],
+        [
+          "clean-up",
+          "OpenCV"
+        ],
+        [
+          "read",
+          "Tesseract (uz, ru, en)"
+        ],
+        [
+          "output",
+          "reading screen + speech"
+        ]
+      ]
     },
     {
       "slug": "haven",
@@ -426,7 +472,31 @@
           "url": "https://t.me/haven_tashkent"
         }
       ],
-      "credit": "The Haven logo and hedgehog are Hack Club's."
+      "credit": "The Haven logo and hedgehog are Hack Club's.",
+      "stage": 3,
+      "flow": [
+        [
+          "money",
+          "PCBWay, Aseprite, .xyz"
+        ],
+        [
+          "people",
+          "team of 14"
+        ],
+        [
+          "place",
+          "venue + workshops"
+        ],
+        [
+          "event",
+          "2 days, 14–15 Nov"
+        ],
+        [
+          "result",
+          "games on itch.io"
+        ]
+      ],
+      "repo": "notazizelse/haven-tashkent-team"
     },
     {
       "slug": "haven-hub",
@@ -442,7 +512,9 @@
         "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs",
         "path": "app",
         "open": "?demo=1&tour=1",
-        "label": "Try the demo (2-minute tour)"
+        "label": "Try the demo (2-minute tour)",
+        "embed": true,
+        "embed_caption": "The real Haven Hub with a made-up team, running in your browser. Nothing gets sent anywhere."
       },
       "repo": "notazizelse/haven-hub",
       "root": "C:/Users/admin/Documents/projects/personal/haven-hub",
@@ -569,7 +641,30 @@
           "url": "https://haventash.xyz"
         }
       ],
-      "credit": "Haven artwork is Hack Club's. The screenshots show a made-up team."
+      "credit": "Haven artwork is Hack Club's. The screenshots show a made-up team.",
+      "stage": 5,
+      "flow": [
+        [
+          "database",
+          "a Google Sheet"
+        ],
+        [
+          "back end",
+          "Apps Script or Node"
+        ],
+        [
+          "front end",
+          "plain ES modules"
+        ],
+        [
+          "people",
+          "tasks, proof, reminders"
+        ],
+        [
+          "public",
+          "event + apply pages"
+        ]
+      ]
     },
     {
       "slug": "badges",
@@ -683,7 +778,30 @@
           "url": "https://github.com/notazizelse/haven-pcb-badges"
         }
       ],
-      "credit": "The Haven logo and hedgehog are Hack Club's."
+      "credit": "The Haven logo and hedgehog are Hack Club's.",
+      "stage": 3,
+      "flow": [
+        [
+          "numbers",
+          "design.py"
+        ],
+        [
+          "art",
+          "numpy, OpenCV, Pillow"
+        ],
+        [
+          "board",
+          "KiCad 10"
+        ],
+        [
+          "fab",
+          "PCBWay, ENIG, UV print"
+        ],
+        [
+          "result",
+          "HACKER / ORGANIZER"
+        ]
+      ]
     },
     {
       "slug": "orbita",
@@ -782,7 +900,31 @@
         "src": "static/art/orbita.svg",
         "alt": "Technical drawing of a 3U CubeSat, 100 by 100 by 300 mm, with solar cells and a payload window",
         "caption": "The 3U CubeSat format we build for, drawn like an engineering sheet."
-      }
+      },
+      "stage": 2,
+      "flow": [
+        [
+          "research",
+          "playbook + 2 studies"
+        ],
+        [
+          "mission",
+          "pick the payload"
+        ],
+        [
+          "hardware",
+          "flight PCB"
+        ],
+        [
+          "integration",
+          "3U CubeSat kit"
+        ],
+        [
+          "flight",
+          "stratospheric balloon"
+        ]
+      ],
+      "repo": "notazizelse/Orbita26"
     },
     {
       "slug": "wit",
@@ -959,7 +1101,30 @@
         "src": "static/art/wit.svg",
         "alt": "Drawing of a balloon, parachute and 3U payload with a radio link to a ground station, plus the list of seven missions",
         "caption": "Balloon, parachute, payload, and the seven missions."
-      }
+      },
+      "stage": 2,
+      "flow": [
+        [
+          "sense",
+          "7 missions' sensors"
+        ],
+        [
+          "compute",
+          "STM32F407"
+        ],
+        [
+          "log",
+          "91-byte telemetry packet"
+        ],
+        [
+          "radio",
+          "2 × LoRa"
+        ],
+        [
+          "ground",
+          "ground station"
+        ]
+      ]
     },
     {
       "slug": "karatefc",
@@ -1036,7 +1201,30 @@
         "src": "static/art/karatefc.svg",
         "alt": "Concept sketch of a 36 mm flight controller with an STM32F405 and a 30.5 mm hole pattern",
         "caption": "Concept sketch: STM32F405, USB-C, 30.5 mm mounting. Not a real layout yet."
-      }
+      },
+      "stage": 1,
+      "flow": [
+        [
+          "config",
+          "USB-C"
+        ],
+        [
+          "brain",
+          "STM32F405"
+        ],
+        [
+          "firmware",
+          "Betaflight"
+        ],
+        [
+          "power",
+          "ESCs"
+        ],
+        [
+          "output",
+          "4 motors"
+        ]
+      ]
     },
     {
       "slug": "vocabio",
@@ -1054,7 +1242,9 @@
         "label": "Open Vocabio",
         "exclude": [
           "_headers"
-        ]
+        ],
+        "embed": true,
+        "embed_caption": "Vocabio, running right here. Try Listen mode."
       },
       "repo": "notazizelse/vocabio",
       "root": "C:/Users/admin/Documents/projects/code/vocabio",
@@ -1117,6 +1307,29 @@
           "label": "Windows app (installer + portable)",
           "url": "https://github.com/notazizelse/vocabio/releases/latest"
         }
+      ],
+      "stage": 4,
+      "flow": [
+        [
+          "data",
+          "my Anki export"
+        ],
+        [
+          "tools",
+          "Python, 400 rewritten words"
+        ],
+        [
+          "study",
+          "review + listen modes"
+        ],
+        [
+          "runs as",
+          "web, iPhone, Windows"
+        ],
+        [
+          "sync",
+          "Cloudflare Workers + KV"
+        ]
       ]
     },
     {
@@ -1132,7 +1345,9 @@
       "app": {
         "src": "C:/Users/admin/Documents/projects/code/camera/docs/demo.html",
         "path": "demo",
-        "label": "Open the demo"
+        "label": "Open the demo",
+        "embed": true,
+        "embed_caption": "The demo with made-up numbers. Drag the time slider."
       },
       "cover": {
         "src": "content/shots/kitchenqueue.png",
@@ -1172,6 +1387,29 @@
           "title": "Architecture",
           "desc": "Camera options, getting data out of a school network, privacy."
         }
+      ],
+      "stage": 3,
+      "flow": [
+        [
+          "see",
+          "school camera"
+        ],
+        [
+          "count",
+          "counter.py (YOLO / OpenCV)"
+        ],
+        [
+          "send",
+          "1 number / 10 s, outbound"
+        ],
+        [
+          "serve",
+          "Python + SSE"
+        ],
+        [
+          "show",
+          "count, wait, weekday forecast"
+        ]
       ]
     },
     {
@@ -1189,7 +1427,10 @@
         "label": "Play it in the browser (38 MB)",
         "exclude": [
           "*.import"
-        ]
+        ],
+        "embed": "click",
+        "embed_label": "Click to load the game here (38 MB)",
+        "embed_caption": "It only loads when you click, because the game is 38 MB."
       },
       "repo": "notazizelse/jumpio",
       "cover": {
@@ -1220,6 +1461,25 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/jumpio"
         }
+      ],
+      "stage": 4,
+      "flow": [
+        [
+          "plan",
+          "5-hour Mario tutorial"
+        ],
+        [
+          "reality",
+          "my own frog game"
+        ],
+        [
+          "engine",
+          "Godot 4"
+        ],
+        [
+          "ship",
+          "itch.io + the web"
+        ]
       ]
     },
     {
@@ -1256,7 +1516,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/complexio"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "macropad",
@@ -1275,7 +1536,13 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/macropad"
         }
-      ]
+      ],
+      "stage": 4,
+      "cover": {
+        "src": "content/repos/macropad/PCB/Pictures/image2.png",
+        "alt": "Macropad PCB layout in KiCad",
+        "caption": "The PCB layout, from the repo."
+      }
     },
     {
       "slug": "limitio",
@@ -1294,7 +1561,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/limitio"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "gps-tracker",
@@ -1313,7 +1581,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/GPS-Tracker"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "haven-bot",
@@ -1336,7 +1605,8 @@
           "label": "The bot on Telegram",
           "url": "https://t.me/haven_tashkent_bot"
         }
-      ]
+      ],
+      "stage": 5
     },
     {
       "slug": "lesson-descriptor",
@@ -1355,7 +1625,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/lesson_descriptor"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "synchronizer",
@@ -1374,7 +1645,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/Synchronizer"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "anki-listen",
@@ -1393,7 +1665,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/anki-listen-mode"
         }
-      ]
+      ],
+      "stage": 4
     },
     {
       "slug": "stm32-fix",
@@ -1412,7 +1685,8 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/STM32_homebrew_fix_script_for_mac"
         }
-      ]
+      ],
+      "stage": 4
     }
   ]
 }

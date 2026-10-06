@@ -1,0 +1,26 @@
+{
+  "description": "A CubeSat PCB for the international Orbita competition 2026 season",
+  "language": null,
+  "html_url": "https://github.com/notazizelse/Orbita26",
+  "default_branch": "main",
+  "created_at": "2026-09-24T13:55:50Z",
+  "pushed_at": "2026-09-24T13:56:28Z",
+  "stargazers_count": 0,
+  "license": null,
+  "languages": {},
+  "files": [
+    [
+      "resources",
+      "dir"
+    ],
+    [
+      "ORBITA26_Camera_Payload_Research.md",
+      "file"
+    ],
+    [
+      "ORBITA26_Technician_Mission_Research.md",
+      "file"
+    ]
+  ],
+  "commits": 1
+}

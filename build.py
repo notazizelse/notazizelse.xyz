@@ -36,6 +36,7 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wg
 SKIP = [".DS_Store", "Thumbs.db", ".git", ".gitignore", "desktop.ini", ".nojekyll"]
 IMG_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
 esc = html.escape
+ASSET_V = hashlib.sha1((STATIC / "styles.css").read_bytes() + (STATIC / "site.js").read_bytes()).hexdigest()[:10]
 
 
 class Site:
@@ -113,7 +114,7 @@ def image(src, out_dir, name=None, widths=(1600, 760)):
         for label, w in zip(("full", "small"), widths):
             tw = min(w, im.width)
             th = round(im.height * tw / im.width)
-            fname = f"{name}-{tw}.webp"
+            fname = f"{name}-{tw}-{key[:6]}.webp"
             cached = CACHE / f"{key}-{fname}"
             if not cached.exists():
                 CACHE.mkdir(parents=True, exist_ok=True)
@@ -181,7 +182,7 @@ def shell(site, *, title, description, body, canonical, og_image=None, left=None
     nav = nav or (f'<a href="{site.home()}#applications">projects</a><a href="{site.home()}#detailed">about</a>'
                   f'<a href="{site.home()}#pins">contact</a>')
     og = f'\n<meta property="og:image" content="{esc(og_image)}">' if og_image else ""
-    js = '\n<script src="/static/site.js" defer></script>' if script else ""
+    js = f'\n<script src="/static/site.js?v={ASSET_V}" defer></script>' if script else ""
     label = page_label or f'{esc(d["docnum"])} – {esc(d["date"])}'
     return f"""<!doctype html>
 <html lang="en">
@@ -201,7 +202,7 @@ def shell(site, *, title, description, body, canonical, og_image=None, left=None
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
-<link rel="stylesheet" href="/static/styles.css">{js}
+<link rel="stylesheet" href="/static/styles.css?v={ASSET_V}">{js}
 </head>
 <body>
 <div class="sheet">
@@ -540,12 +541,68 @@ def an_left(site, p):
     return (f'<a class="mark" href="{site.home()}"><span class="chip" aria-hidden="true"></span>{esc(site.data["part"])}</a>')
 
 
+STAGES = ["Idea", "Design", "Build", "Shipped", "In use"]
+LANG_COLORS = {"C": "#555555", "C++": "#f34b7d", "Python": "#3572A5", "JavaScript": "#f1e05a", "C#": "#178600",
+               "GDScript": "#355570", "HTML": "#e34c26", "CSS": "#663399", "Assembly": "#6E4C13", "Makefile": "#427819",
+               "Linker Script": "#b5b5b5", "Shell": "#89e051", "PowerShell": "#012456", "Dockerfile": "#384d54",
+               "Roff": "#d8c9a0", "Inno Setup": "#264b99", "Processing": "#0096D8"}
+
+
+def lifecycle(p):
+    n = int(p.get("stage", 0))
+    if not n:
+        return ""
+    items = "".join(f'<li class="{"done" if i < n else "now" if i == n else ""}">{s}</li>' for i, s in enumerate(STAGES, 1))
+    return (f'<div class="life" role="img" aria-label="Product status: {STAGES[n - 1]}, step {n} of 5">'
+            f'<span class="life-k">Product status</span><ol>{items}</ol>'
+            f'<span class="life-note">{esc(p.get("status", ""))}</span></div>')
+
+
+def repo_meta(p):
+    repo, private = p.get("repo"), p.get("private", False)
+    if not repo or private:
+        return None
+    f = CONTENT / "repos" / repo.split("/")[1] / "meta.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
+
+
+def repo_panel(p, meta):
+    repo = p["repo"]
+    langs = meta.get("languages") or {}
+    total = sum(langs.values()) if isinstance(langs, dict) else 0
+    if total:
+        segs = "".join(f'<span style="width:{v / total * 100:.2f}%;background:{LANG_COLORS.get(k, "#999")}" title="{esc(k)} {v / total * 100:.0f}%"></span>'
+                       for k, v in langs.items())
+        keys = "".join(f'<li><i style="background:{LANG_COLORS.get(k, "#999")}"></i>{esc(k)} <span>{v / total * 100:.0f}%</span></li>'
+                       for k, v in list(langs.items())[:5] if v / total >= 0.005)
+        bar = f'<div class="langbar">{segs}</div><ul class="langs">{keys}</ul>'
+    else:
+        bar = '<div class="langbar empty"></div><p class="repo-f">No code yet: documents and hardware files.</p>'
+    files = meta.get("files") or []
+    tree = "".join(f'<li class="{t}">{esc(n)}{"/" if t == "dir" else ""}</li>' for n, t in files[:14])
+    more = f'<li class="more">+ {len(files) - 14} more</li>' if len(files) > 14 else ""
+    bits = [f'{meta.get("commits", 0)} commit{"s" if meta.get("commits") != 1 else ""}']
+    if meta.get("license") and meta["license"] != "NOASSERTION":
+        bits.append(meta["license"])
+    if meta.get("pushed_at"):
+        bits.append(f'updated {meta["pushed_at"][:10]}')
+    return (f'<aside class="repo"><div class="repo-h"><span>Repository</span>'
+            f'<a href="https://github.com/{esc(repo)}">github.com/{esc(repo)} ↗</a></div>{bar}'
+            f'<ul class="tree">{tree}{more}</ul><p class="repo-f">{" · ".join(bits)}</p></aside>')
+
+
+def project_thumb(p):
+    c = p.get("cover") or (p.get("gallery") or [None])[0]
+    return c
+
+
 def render_project(site, p, out):
     d = site.data
     slug = p["slug"]
     img_dir = out / "img"
     repo, private = p.get("repo"), p.get("private", False)
     label = f'{p["_an"]} · {esc(site.host(slug))}'
+    meta = repo_meta(p)
 
     doc_map = {}   # source path -> doc page name, so docs can link to each other
     for doc in p.get("docs", []):
@@ -568,28 +625,61 @@ def render_project(site, p, out):
     if p.get("files"):
         actions.append('<a href="#design-files">Design files</a>')
 
-    parts = [f'<p class="back"><a href="{site.home()}#applications">← {esc(d["part"])} data sheet</a></p>',
-             f'<header class="an-head"><span class="kind">Application note {p["_an"]} · {p["_ref"]}</span>'
-             f"<h1>{esc(p['title'])}</h1>"
-             f'<span class="meta">{esc(p["year"])} · {esc(p.get("status", ""))} · {esc(site.host(slug))}</span></header>',
-             f'<section class="abstract"><b>ABSTRACT</b>{paras(site, p["lead"])}</section>']
-    if actions:
-        parts.append(f'<nav class="actions" aria-label="Links">{"".join(actions)}</nav>')
-
     fig_n = 0
     og = None
+    media = ""
     if p.get("cover"):
         c = p["cover"]
         fig_n += 1
-        html_img, v = fig_img(c["src"], c["alt"], img_dir, "(min-width: 1120px) 1060px, 100vw", loading="eager")
+        html_img, v = fig_img(c["src"], c["alt"], img_dir, "(min-width: 900px) 540px, 100vw", loading="eager")
         og = site.sub(slug, f"img/{v['full']}")
-        parts.append(f'<figure class="fig an-wide">{html_img}<figcaption><b>Figure {fig_n}.</b>{esc(c.get("caption") or c["alt"])}</figcaption></figure>')
+        media = f'<figure class="fig an-cover">{html_img}<figcaption><b>Figure {fig_n}.</b>{esc(c.get("caption") or c["alt"])}</figcaption></figure>'
+    elif meta:
+        media = repo_panel(p, meta)
+
+    text_col = (f'<span class="kind">Application note {p["_an"]} · {p["_ref"]}</span>'
+                f"<h1>{esc(p['title'])}</h1>"
+                f'<span class="meta">{esc(p["year"])} · {esc(site.host(slug))}</span>'
+                f'{lifecycle(p)}'
+                f'<section class="abstract"><b>ABSTRACT</b>{paras(site, p["lead"])}</section>'
+                + (f'<nav class="actions" aria-label="Links">{"".join(actions)}</nav>' if actions else ""))
+    parts = [f'<p class="back"><a href="{site.home()}#applications">← {esc(d["part"])} data sheet</a></p>',
+             f'<section class="an-hero{" has-media" if media else ""}"><div class="an-text">{text_col}</div>{media}</section>']
 
     sec = 0
     if p.get("facts"):
         sec += 1
+        cells = "".join(f"<div><dt>{esc(k)}</dt><dd>{inline(site, v)}</dd></div>" for k, v in p["facts"])
         parts.append(h2(str(sec), "Key Specifications"))
-        parts.append(table(f"{sec}-1", "", ["Parameter", "Value"], [[esc(k), inline(site, v)] for k, v in p["facts"]], raw=True))
+        parts.append(f'<dl class="specgrid">{cells}</dl>')
+
+    if p.get("flow"):
+        sec += 1
+        fig_n += 1
+        blocks = "".join(f'<li><span class="y">{esc(a)}</span><span class="t">{esc(b)}</span></li>' for a, b in p["flow"])
+        parts.append(h2(str(sec), "Functional Block Diagram"))
+        parts.append(f'<figure class="fig flow"><ol class="blocks">{blocks}</ol>'
+                     f'<figcaption><b>Figure {fig_n}.</b>How {esc(p["title"])} works, left to right</figcaption></figure>')
+
+    if p.get("app") and p["app"].get("embed"):
+        a = p["app"]
+        sec += 1
+        fig_n += 1
+        src = f'/{a["path"]}/{a.get("open", "")}'
+        bar = (f'<div class="bar"><i></i><i></i><i></i><span class="url">{esc(site.host(slug))}/{esc(a["path"])}/</span>'
+               f'<a href="{esc(src)}">open full screen ↗</a></div>')
+        if a["embed"] == "click":
+            poster = ""
+            if p.get("cover"):
+                v = image(p["cover"]["src"], img_dir)
+                poster = f'<img src="/img/{v["small"]}" alt="" width="{v["w"]}" height="{v["h"]}">'
+            inner = (f'<button type="button" class="load" data-embed="{esc(src)}" data-title="{esc(p["title"])}">{poster}'
+                     f'<span>{esc(a.get("embed_label", "Load it here"))}</span></button>')
+        else:
+            inner = f'<iframe src="{esc(src)}" loading="lazy" title="{esc(p["title"])}, running live"></iframe>'
+        parts.append(h2(str(sec), "Live Demo"))
+        parts.append(f'<figure class="fig demo"><div class="browser">{bar}{inner}</div>'
+                     f'<figcaption><b>Figure {fig_n}.</b>{esc(a.get("embed_caption", "The real thing, running right here."))}</figcaption></figure>')
 
     for s in p.get("body", []):
         sec += 1
@@ -620,13 +710,14 @@ def render_project(site, p, out):
 
     if p.get("docs"):
         sec += 1
-        items = ""
-        for doc in p["docs"]:
-            desc = f'<span class="desc">{esc(doc["desc"])}</span>' if doc.get("desc") else ""
-            items += f'<li><a href="/docs/{doc["name"]}/">{esc(doc["title"])}</a>{desc}</li>'
+        cards = ""
+        for i, doc in enumerate(p["docs"], 1):
+            desc = f'<span class="docd">{esc(doc["desc"])}</span>' if doc.get("desc") else ""
+            cards += (f'<a class="doc" href="/docs/{doc["name"]}/"><span class="docbar">{p["_an"]}-D{i}</span>'
+                      f'<span class="doct">{esc(doc["title"])}</span>{desc}<span class="docgo">Read →</span></a>')
             render_doc(site, p, doc, out, doc_map)
         parts.append(h2(str(sec), "Technical Documents", "documents"))
-        parts.append(f'<ul class="files">{items}</ul>')
+        parts.append(f'<div class="docs">{cards}</div>')
 
     if p.get("files"):
         sec += 1
@@ -637,19 +728,41 @@ def render_project(site, p, out):
             if not src.exists():
                 sys.exit(f"missing file: {src}")
             shutil.copy2(src, out / "files" / f["name"])
+            ext = Path(f["name"]).suffix.lstrip(".").upper()[:4] or "FILE"
             desc = f'<span class="desc">{esc(f["desc"])}</span>' if f.get("desc") else ""
-            items += (f'<li><a href="/files/{esc(f["name"])}" download>{esc(f["label"])}</a>'
-                      f'<span class="size">{esc(f["name"])} · {human_size(src.stat().st_size)}</span>{desc}</li>')
+            items += (f'<li><span class="ext ext-{esc(ext.lower())}">{esc(ext)}</span><span class="fname">'
+                      f'<a href="/files/{esc(f["name"])}" download>{esc(f["label"])}</a>{desc}</span>'
+                      f'<span class="size">{human_size(src.stat().st_size)}</span></li>')
         parts.append(h2(str(sec), "Design Files", "design-files"))
         parts.append(f'<ul class="files">{items}</ul>')
+
+    if meta and p.get("cover"):
+        sec += 1
+        parts.append(h2(str(sec), "Source"))
+        parts.append(f'<div class="repo-wrap">{repo_panel(p, meta)}</div>')
 
     if repo and private:
         parts.append('<p class="credit">The code is in a private repository for now.</p>')
     if p.get("credit"):
         parts.append(f'<p class="credit">{inline(site, p["credit"])}</p>')
 
+    # previous / next application note
+    i = site.projects.index(p)
+    nav = ""
+    for cls, q in (("prev", site.projects[i - 1]), ("next", site.projects[(i + 1) % len(site.projects)])):
+        t = project_thumb(q)
+        thumb = ""
+        if t:
+            v = image(t["src"], img_dir, widths=(520, 300))
+            thumb = f'<img src="/img/{v["small"]}" alt="" width="{v["w"]}" height="{v["h"]}" loading="lazy">'
+        arrow = "←" if cls == "prev" else "→"
+        nav += (f'<a class="{cls}" href="{site.sub(q["slug"])}">{thumb}<span class="k">{arrow} {q["_an"]}</span>'
+                f'<span class="t">{esc(q["title"])}</span></a>')
+    parts.append(f'<nav class="annav" aria-label="Other application notes">{nav}</nav>')
+
     page = shell(site, title=f"{p['title']} · {p['_an']} · {d['name']}", description=plain(p["lead"][0])[:300],
-                 body="\n".join(parts), canonical=site.sub(slug), og_image=og, left=an_left(site, p), page_label=label)
+                 body="\n".join(parts), canonical=site.sub(slug), og_image=og, left=an_left(site, p), page_label=label,
+                 script=bool(p.get("app") and p["app"].get("embed") == "click"))
     (out / "index.html").write_text(page, encoding="utf-8")
 
 
@@ -755,7 +868,7 @@ def main():
     roots = [(apex, [apex / "index.html"])]
     for p in site.projects:
         out = PUBLIC / "p" / p["slug"]
-        write_static(out / "static")
+        write_static(out / "static", with_js=True)
         render_project(site, p, out)
         roots.append((out, [out / "index.html"] + sorted((out / "docs").glob("*/index.html"))))
 

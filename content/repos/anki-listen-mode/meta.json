@@ -5,20 +5,52 @@
   "default_branch": "master",
   "created_at": "2026-10-05T19:28:37Z",
   "pushed_at": "2026-10-05T19:28:43Z",
-  "private": false,
-  "languages": [
-    "Python"
-  ],
+  "stargazers_count": 0,
+  "license": "AGPL-3.0",
+  "languages": {
+    "Python": 15962
+  },
   "files": [
-    ".gitignore",
-    "LICENSE",
-    "README.md",
-    "__init__.py",
-    "config.json",
-    "config.md",
-    "listen.py",
-    "manifest.json",
-    "tests",
-    "textutils.py"
-  ]
+    [
+      "tests",
+      "dir"
+    ],
+    [
+      ".gitignore",
+      "file"
+    ],
+    [
+      "__init__.py",
+      "file"
+    ],
+    [
+      "config.json",
+      "file"
+    ],
+    [
+      "config.md",
+      "file"
+    ],
+    [
+      "LICENSE",
+      "file"
+    ],
+    [
+      "listen.py",
+      "file"
+    ],
+    [
+      "manifest.json",
+      "file"
+    ],
+    [
+      "README.md",
+      "file"
+    ],
+    [
+      "textutils.py",
+      "file"
+    ]
+  ],
+  "commits": 1
 }

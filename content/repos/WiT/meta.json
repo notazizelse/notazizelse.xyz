@@ -1,0 +1,22 @@
+{
+  "description": "A CubeSat PCB for Women in Tech video",
+  "language": null,
+  "html_url": "https://github.com/notazizelse/WiT",
+  "default_branch": "main",
+  "created_at": "2026-09-24T13:54:05Z",
+  "pushed_at": "2026-09-24T13:54:42Z",
+  "stargazers_count": 0,
+  "license": null,
+  "languages": {},
+  "files": [
+    [
+      "assets",
+      "dir"
+    ],
+    [
+      "wit",
+      "dir"
+    ]
+  ],
+  "commits": 1
+}
