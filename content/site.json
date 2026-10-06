@@ -3,33 +3,129 @@
   "handle": "notazizelse",
   "domain": "notazizelse.xyz",
   "email": "notazizelse@gmail.com",
-  "description": "Azizbek Numonjonov (notazizelse). I make circuit boards, flight controllers and CanSat electronics in Tashkent, Uzbekistan.",
-  "updated": "October 2026",
+  "part": "AZB-12",
+  "docnum": "SLAS-AZ12",
+  "date": "OCTOBER 2026",
+  "title_long": "PCB Designer and Embedded Engineer With Integrated Teaching and Game-Jam Organising",
+  "description": "Azizbek Numonjonov (notazizelse): PCBs, flight controllers and CanSat electronics from Tashkent, Uzbekistan. Laid out like a datasheet, because that's my world.",
 
   "photo": {
     "src": "C:/Users/admin/Pictures/pfp.jpg",
     "name": "me-workshop",
     "alt": "Me in a hard hat and work jacket, giving a thumbs up next to a laser cutter",
-    "caption": "me and a laser cutter"
+    "caption": "Device in its natural habitat (a workshop, next to a laser cutter)."
   },
 
-  "intro": [
-    "Hi, I'm Azizbek. I'm in grade 12 at Tashkent Presidential School in Uzbekistan, and mostly I make circuit boards: flight controllers, CanSat electronics, and boards for teaching other kids how to make circuit boards.",
-    "I started with LEGO, moved to Arduino, then spent two internships drawing PCBs for real products. These days I'm on the national CanSat and rocketry teams, I teach, and I'm organising a game jam.",
-    "Every project on this site has its own subdomain, like [camp.notazizelse.xyz](slug:camp). The code for most of them is on [GitHub](https://github.com/notazizelse)."
+  "lcd": [
+    ["hi, i'm Azizbek", "notazizelse.xyz"],
+    ["i make PCBs", "& flight ctrls"],
+    ["lead EE, Orbita", "CanSat + IREC"],
+    ["Haven Tashkent", "Nov 14-15, free"],
+    ["200 students", "etched PCBs ^-^"],
+    ["type something", "i'll show it :)"]
   ],
+
+  "features": [
+    "Designs PCBs in KiCad, from 2-layer teaching boards to a 4-layer STM32 balloon payload",
+    "Built a drone flight controller from scratch: schematic, PCB and firmware",
+    "Lead electronics engineer for Uzbekistan's national Orbita CanSat and IREC rocketry teams, 2026–27",
+    "Taught 200 students aged 12–17 to design and etch their own PCBs",
+    "CAD in SolidWorks, Fusion 360 and Blender; sells models on Cults3D",
+    "Organises Hack Club Haven Tashkent, a free game jam for teenagers",
+    "Operating languages: Uzbek, English, Russian"
+  ],
+
+  "applications": [
+    {"text": "CubeSat payload computers", "slug": "camp"},
+    {"text": "Reading aids for dyslexic readers", "slug": "glasses"},
+    {"text": "Stratospheric balloon payloads", "slug": "wit"},
+    {"text": "Disposable research drones", "slug": "karatefc"},
+    {"text": "Game jams and the tools to run them", "slug": "haven"},
+    {"text": "PCB name badges", "slug": "badges"},
+    {"text": "SAT vocabulary, out loud", "slug": "vocabio"}
+  ],
+
+  "description": [
+    "The AZB-12 is a PCB designer and embedded engineer in a single, human-sized package. It was made in Uzbekistan, it's in grade 12 at Tashkent Presidential School, and it mostly makes circuit boards: flight controllers, CanSat electronics, and boards that teach other kids to make circuit boards.",
+    "Hi, that's me, Azizbek ^-^ Everything on this page is true. It's just laid out like a datasheet. Every project has its own page at [project].notazizelse.xyz, like [camp.notazizelse.xyz](slug:camp)."
+  ],
+
+  "device_info": [["AZB-12", "Human, Tashkent (UZ)", "1 person"]],
 
   "now": [
-    "Lead electronics engineer for Uzbekistan's national [Orbita CanSat and IREC rocketry teams](slug:orbita). Right now that means drawing the flight PCB.",
-    "Organising [Hack Club Haven Tashkent](slug:haven), a free two-day game jam for teenagers on 14–15 November. We're a team of 14, and PCBWay, Aseprite and .xyz are sponsoring.",
-    "Teaching 20 students at Turin Polytechnic University to draw a schematic, lay out a CubeSat board and write its firmware.",
-    "Helping pitch sponsors for 50 FTC kits for Uzbek schools, so more than a couple of teams from here can compete abroad."
+    {"pin": 1, "net": "ORBITA", "title": "Orbita CanSat + IREC", "role": "lead electronics engineer", "slug": "orbita"},
+    {"pin": 2, "net": "HAVEN", "title": "Haven Tashkent", "role": "lead organiser, 14–15 Nov", "slug": "haven"},
+    {"pin": 3, "net": "TTPU", "title": "Turin Polytechnic", "role": "PCB design class, 20 students"},
+    {"pin": 4, "net": "FIRST_UZ", "title": "FIRST in Uzbekistan", "role": "sponsors for 50 FTC kits"}
   ],
 
-  "strip": [
-    {"slug": "camp", "src": "C:/Users/admin/Documents/projects/pcb/camp-main/docs/images/pcb-top.png", "name": "strip-camp", "alt": "Top side of the CAMP v2 board", "caption": "CAMP v2, the Technocamp board"},
-    {"slug": "badges", "src": "C:/Users/admin/Documents/projects/personal/haven-pcb-badges/badge-art/3-mockups/participant-front.png", "name": "strip-badge", "alt": "The lime-green HACKER PCB badge", "caption": "a Haven PCB badge"},
-    {"slug": "haven-hub", "src": "C:/Users/admin/Documents/projects/personal/haven-hub/docs/assets/tour/overview.webp", "name": "strip-hub", "alt": "Haven Hub's admin overview page", "caption": "Haven Hub (demo team)"}
+  "pins": [
+    {"n": 1, "name": "EMAIL", "type": "I/O", "url": "mailto:notazizelse@gmail.com", "desc": "notazizelse@gmail.com. The best way to reach me."},
+    {"n": 2, "name": "GITHUB", "type": "O", "url": "https://github.com/notazizelse", "desc": "@notazizelse. Code and boards for most projects."},
+    {"n": 3, "name": "TELEGRAM", "type": "I/O", "url": "https://t.me/azizelse_0", "desc": "@azizelse_0"},
+    {"n": 4, "name": "INSTA", "type": "I/O", "url": "https://instagram.com/azizbek_0v2", "desc": "@azizbek_0v2 on Instagram"},
+    {"n": 5, "name": "ITCH.IO", "type": "O", "url": "https://notazizelse.itch.io", "desc": "Games. So far, one frog."},
+    {"n": 6, "name": "CHESS", "type": "I/O", "url": "https://www.chess.com/member/notazizelse", "desc": "notazizelse on Chess.com"},
+    {"n": 7, "name": "NC", "type": "—", "url": "", "desc": "No connection. Reserved for whatever I build next."},
+    {"n": 8, "name": "GND", "type": "P", "url": "", "desc": "Ground. Tashkent, Uzbekistan."},
+    {"n": 9, "name": "CAMP", "type": "O", "slug": "camp", "desc": "CAMP v2, the Technocamp teaching board"},
+    {"n": 10, "name": "GLASSES", "type": "O", "slug": "glasses", "desc": "Glasses that read a page out loud"},
+    {"n": 11, "name": "HAVEN", "type": "O", "slug": "haven", "desc": "Haven Tashkent game jam"},
+    {"n": 12, "name": "HUB", "type": "O", "slug": "haven-hub", "desc": "Haven Hub, the team hub"},
+    {"n": 13, "name": "BADGES", "type": "O", "slug": "badges", "desc": "Die-cut PCB name badges"},
+    {"n": 14, "name": "ORBITA", "type": "O", "slug": "orbita", "desc": "National CanSat and rocketry teams"},
+    {"n": 15, "name": "WIT", "type": "O", "slug": "wit", "desc": "3U stratospheric balloon payload"},
+    {"n": 16, "name": "VCC", "type": "P", "url": "", "desc": "Supply. Nominal: curiosity."}
+  ],
+
+  "ratings": [
+    ["Students taught at one camp", "200", "Technocamp 2026"],
+    ["Internships before finishing school", "3", "Intelligent Software, Unique Dynamic, NazarX"],
+    ["Flight controllers written from scratch", "1", "About 10 months at Unique Dynamic"],
+    ["First LEGO sumo competitions lost", "1", "Horribly humbled"],
+    ["Harry Potter models sold", "0", "Cults3D, smh"],
+    ["Prize for winning a drone race", "1 TV", "Digital Generation IT camp, 2024"]
+  ],
+
+  "conditions": [
+    ["Languages", "Uzbek, English, Russian"],
+    ["EDA", "KiCad 10 (Altium once the WIT payload flies)"],
+    ["MCUs", "STM32, ESP32, ATmega328P, RP2040"],
+    ["CAD", "SolidWorks, Fusion 360, Blender"],
+    ["Code", "C, C++, Python, JavaScript, GDScript"],
+    ["Location", "Tashkent, Uzbekistan"]
+  ],
+
+  "electrical": [
+    ["AS Mathematics", "Cambridge, June 2026", "", "98", "100", "marks"],
+    ["AS Computer Science", "Cambridge, June 2026", "", "86 (A)", "100", "marks"],
+    ["AS Physics", "Cambridge, June 2026", "", "85 (A)", "100", "marks"],
+    ["SAT", "June 2026", "400", "1440", "1600", "points"],
+    ["IELTS", "Overall band", "0", "8.0", "9.0", "band"]
+  ],
+
+  "results": [
+    ["International", "1st place, International AI Robotics Competition, China (team)"],
+    ["International", "Finalist alliance, Sanya FTC off-season, China, picked from the 25th seed (team)"],
+    ["International", "1st qualifying seed and finalist alliance, Almaty Tech Cup XII, FTC (team)"],
+    ["International", "9th qualifying seed, Lepsi Fest, FTC (team)"],
+    ["National", "1st place, National Robotics Championship, autonomous sumo"],
+    ["National", "Showed our robotics and CanSat projects to the President of Uzbekistan"],
+    ["National", "Member of Uzbekistan's FIRST Global Challenge team"],
+    ["National", "1st place, drone racing, Digital Generation IT camp, 2024"],
+    ["National", "3rd place, Digital Generation hackathon, 2023"],
+    ["Regional", "4th place, regional round of the National Olympiad in Informatics (C++)"],
+    ["Course", "CS50P certificate, 2025"]
+  ],
+
+  "blocks": [
+    ["Grade 6", "C++"],
+    ["LEGO", "got humbled"],
+    ["Arduino", "national 1st"],
+    ["2025", "STM32 + optics"],
+    ["2025–26", "flight controller"],
+    ["2026", "CubeSat PCBs"],
+    ["2026–27", "Orbita team"]
   ],
 
   "about": [
@@ -44,38 +140,21 @@
     "Long term I want to bring FIRST-style competitions to Uzbekistan, and after that TEKNOFEST. Right now only a couple of teams from here compete seriously abroad, and I'd like that to change."
   ],
 
-  "work": [
-    {"when": "2026–27", "what": "Lead electronics engineer", "where": "Uzbekistan national Orbita CanSat and IREC rocketry teams, via NazarX"},
-    {"when": "2026–27", "what": "PCB design instructor", "where": "Turin Polytechnic University in Tashkent, 20 students"},
-    {"when": "Sep–Nov 2026", "what": "Lead organiser", "where": "Hack Club Haven Tashkent"},
-    {"when": "Summer 2026", "what": "Lead electronics teacher", "where": "Technocamp 2026, 200 students, with the Robotics & Engineering Association"},
-    {"when": "Summer 2026", "what": "Lead teacher", "where": "STEM camp with the U.S. Embassy in Uzbekistan"},
-    {"when": "2025–26", "what": "Embedded systems intern", "where": "Unique Dynamic. Flight controller from scratch, about 10 months"},
-    {"when": "2025–26", "what": "CAD engineer, turret and compression", "where": "NazarX FTC team"},
-    {"when": "2025–26", "what": "Team leader", "where": "Uzbekistan FIRST Global Challenge team"},
-    {"when": "Summer 2025", "what": "Engineering intern, optics and PCB", "where": "Intelligent Software"},
-    {"when": "since 2024", "what": "Selling CAD models", "where": "Cults3D. SolidWorks, Fusion 360, Blender"}
+  "modes": [
+    ["Swimming", "Regional champion."],
+    ["Karate", "Champion, Samarkand."],
+    ["Knife throwing", "National runner-up. It's a precision target sport, I promise."]
   ],
 
-  "honors": [
-    {"when": "China", "text": "1st place, International AI Robotics Competition (team)"},
-    {"when": "China", "text": "Finalist alliance at the Sanya FTC off-season event, picked from the 25th seed (team)"},
-    {"when": "Almaty", "text": "1st qualifying seed and finalist alliance, Almaty Tech Cup XII, FTC (team)"},
-    {"when": "", "text": "9th qualifying seed, Lepsi Fest, FTC (team)"},
-    {"when": "National", "text": "1st place, National Robotics Championship, autonomous sumo"},
-    {"when": "National", "text": "Showed our robotics and CanSat projects to the President of Uzbekistan"},
-    {"when": "National", "text": "Member of Uzbekistan's FIRST Global Challenge team"},
-    {"when": "2024", "text": "1st place in drone racing at the Digital Generation IT camp (the prize was a TV)"},
-    {"when": "2023", "text": "3rd place, Digital Generation hackathon"},
-    {"when": "Regional", "text": "4th place, regional round of the National Olympiad in Informatics"},
-    {"when": "2025", "text": "CS50P certificate"}
+  "revisions": [
+    ["2021", "A", "Initial release. Tashkent Presidential School, competitive programming in C++."],
+    ["", "B", "Added LEGO robotics: a sumo robot, a crane, a fidget-spinner factory."],
+    ["", "C", "Ported to Arduino. 1st place at the National Robotics Championship. Started selling CAD models."],
+    ["Summer 2025", "D", "Added STM32, optics and PCB design. Intelligent Software internship."],
+    ["2025–26", "E", "Flight controller from scratch at Unique Dynamic. CAD engineer for NazarX FTC. Led the FIRST Global Challenge team."],
+    ["Summer 2026", "F", "Technocamp: 200 students, CAMP v2 board. U.S. Embassy STEM camp. Showed our work to the President."],
+    ["2026–27", "G", "Current revision. Lead EE for the national Orbita and IREC teams. Organising Haven Tashkent. Teaching at Turin Polytechnic."]
   ],
 
-  "other": [
-    "Outside of engineering I'm a regional swimming champion, a karate champion in Samarkand, and national runner-up in knife throwing (it's a precision target sport, I promise).",
-    "School: Tashkent Presidential School since grade 6. Cambridge AS results were Maths 98/100, Computer Science A and Physics A, and I got 1440 on the SAT and 8.0 on IELTS. Next I want to study electrical or mechanical engineering. I speak Uzbek, English and Russian.",
-    "Smaller things on GitHub: [limitio](https://github.com/notazizelse/limitio) (a screen-time app in C#), [GPS-Tracker](https://github.com/notazizelse/GPS-Tracker), [complexio](https://github.com/notazizelse/complexio) (line follower), my [macropad](https://github.com/notazizelse/macropad) for Hack Club, the [Haven registration bot](https://github.com/notazizelse/haven-tashkent_bot), a [Homebrew STM32 fix](https://github.com/notazizelse/STM32_homebrew_fix_script_for_mac) for macOS, and an Anki add-on that reads your cards out loud."
-  ],
-
-  "contact": "Email is best: [notazizelse@gmail.com](mailto:notazizelse@gmail.com). I'm notazizelse on [GitHub](https://github.com/notazizelse), [itch.io](https://notazizelse.itch.io) and [Chess.com](https://www.chess.com/member/notazizelse), [@azizelse_0](https://t.me/azizelse_0) on Telegram and [@azizbek_0v2](https://instagram.com/azizbek_0v2) on Instagram. If you want to sponsor Haven, need a PCB, or just want to talk flight controllers, write to me."
+  "contact": "Email is best: [notazizelse@gmail.com](mailto:notazizelse@gmail.com). If you want to sponsor Haven, need a PCB, or just want to talk flight controllers, write to me. Everything else is on the pins in section 5."
 }

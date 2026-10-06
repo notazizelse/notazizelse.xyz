@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="13" fill="#1d1c19">
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e4dfd2" stroke-width="1"/></pattern>
+    <marker id="a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" fill="#1d1c19"/></marker>
+  </defs>
+  <rect width="800" height="600" fill="#f7f5ee"/>
+  <rect width="800" height="600" fill="url(#g)"/>
+
+  <!-- front view of the frame -->
+  <g fill="none" stroke="#1d1c19" stroke-width="7" stroke-linejoin="round">
+    <path d="M150 230h170q16 0 16 16v54q0 50-50 50h-86q-50 0-50-50v-54q0-16 16-16z" fill="#eef1f2"/>
+    <path d="M480 230h170q16 0 16 16v54q0 50-50 50h-86q-50 0-50-50v-54q0-16 16-16z" fill="#eef1f2"/>
+    <path d="M336 252q64-34 128 0"/>
+    <path d="M134 246H96M666 246h38"/>
+  </g>
+  <path d="M170 262l40 50M500 262l40 50" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- ESP32-CAM on the right hinge -->
+  <rect x="652" y="170" width="76" height="56" rx="4" fill="#1d1c19"/>
+  <circle cx="690" cy="198" r="16" fill="#3a3f45" stroke="#c9c9c9" stroke-width="2"/>
+  <circle cx="690" cy="198" r="7" fill="#0b0c0d"/><circle cx="686" cy="194" r="2.5" fill="#7c8a99"/>
+  <rect x="714" y="176" width="9" height="9" fill="#ffe08a"/>
+  <!-- button -->
+  <rect x="632" y="196" width="16" height="16" rx="3" fill="#e05a2b" stroke="#1d1c19" stroke-width="2"/>
+  <!-- battery pack on the left temple -->
+  <rect x="64" y="200" width="70" height="36" rx="6" fill="#d8d2c2" stroke="#1d1c19" stroke-width="2"/>
+  <text x="99" y="223" text-anchor="middle" font-size="11">LiPo</text>
+  <path d="M134 218q120-60 518-10" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <!-- callouts -->
+  <g font-size="13">
+    <path d="M690 160V110H560" stroke="#1d1c19" stroke-width="1" fill="none"/><text x="404" y="106">ESP32-CAM, photo + flash</text>
+    <path d="M640 220v80h-40" stroke="#1d1c19" stroke-width="1" fill="none"/>
+    <text x="440" y="408">press the button, it reads the page</text>
+    <path d="M600 300v90" stroke="#1d1c19" stroke-width="1"/>
+    <path d="M99 240v140" stroke="#1d1c19" stroke-width="1"/><text x="40" y="400">LiPo + TP4056 + MT3608 → 5 V</text>
+    <path d="M300 370v60" stroke="#1d1c19" stroke-width="1"/><text x="200" y="450">3D-printed PETG frame</text>
+  </g>
+
+  <!-- signal path -->
+  <g font-size="12">
+    <rect x="40" y="490" width="720" height="70" fill="none" stroke="#1d1c19" stroke-width="1.5"/>
+    <text x="56" y="518">photo</text><path d="M104 514h46" stroke="#1d1c19" marker-end="url(#a)"/>
+    <text x="158" y="518">HTTPS</text><path d="M206 514h46" stroke="#1d1c19" marker-end="url(#a)"/>
+    <text x="260" y="518">OpenCV</text><path d="M316 514h46" stroke="#1d1c19" marker-end="url(#a)"/>
+    <text x="370" y="518">Tesseract</text><path d="M448 514h46" stroke="#1d1c19" marker-end="url(#a)"/>
+    <text x="502" y="518">reading screen</text><path d="M620 514h46" stroke="#1d1c19" marker-end="url(#a)"/>
+    <text x="674" y="518">speech</text>
+    <text x="56" y="544" font-size="11" fill="#5f5b52">uz · ru · en · word-by-word highlighting · adjustable spacing</text>
+  </g>
+</svg>

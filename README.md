@@ -1,6 +1,6 @@
 # notazizelse.xyz
 
-My personal site. The home page is **https://notazizelse.xyz**, and every project has its own subdomain at **https://[project].notazizelse.xyz** with photos, specs, its documents and downloads.
+My personal site, laid out like a component datasheet (part number AZB-12). The home page is **https://notazizelse.xyz**, and every project has its own subdomain at **https://[project].notazizelse.xyz** with photos, specs, its documents and downloads.
 
 ## How it's put together
 
@@ -11,7 +11,8 @@ My personal site. The home page is **https://notazizelse.xyz**, and every projec
 | `content/repos/` | READMEs of GitHub-only projects, fetched by `tools/fetch_readmes.py` |
 | `content/shots/` | Screenshots of apps that had none |
 | `build.py` | Builds everything into `dist/public` (Python, Pillow, Markdown) |
-| `static/styles.css` | The only stylesheet. There's no JavaScript on the site itself |
+| `static/styles.css`, `static/site.js` | The stylesheet, and the script for the 16×2 LCD on the home page |
+| `static/art/` | Technical drawings for projects that have no photos |
 | `server/server.py` | Static server that picks a folder by hostname (standard library only) |
 | `server/sitectl` | Controls the site on the VM: start, stop, status, install, tunnel, cron |
 | `deploy/deploy.ps1` | Build, upload and go live |
@@ -55,3 +56,8 @@ cf/             tunnel credentials (secret)
 
 - The `notazizelse-site` tunnel serves `notazizelse.xyz` and `*.notazizelse.xyz`.
 - Cron runs `sitectl start` at boot and `sitectl ensure` every 2 minutes.
+
+## Type
+
+- [Departure Mono](https://departuremono.com) by Helena Zhang and Tobias Fried (OFL), for part numbers, labels and the LCD glyphs.
+- [Atkinson Hyperlegible Next and Mono](https://www.brailleinstitute.org/freefont/) by the Braille Institute (OFL), for reading. It's the same family the glasses project's reading screen offers.

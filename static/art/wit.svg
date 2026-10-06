@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="13" fill="#1d1c19">
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e4dfd2" stroke-width="1"/></pattern>
+    <marker id="a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" fill="#1d1c19"/></marker>
+  </defs>
+  <rect width="800" height="600" fill="#f7f5ee"/>
+  <rect width="800" height="600" fill="url(#g)"/>
+
+  <!-- balloon -->
+  <path d="M200 40c-70 0-110 52-110 112 0 70 70 120 110 140 40-20 110-70 110-140 0-60-40-112-110-112z" fill="#fbfaf6" stroke="#1d1c19" stroke-width="2"/>
+  <path d="M200 40c-25 40-30 180 0 252M200 40c25 40 30 180 0 252" fill="none" stroke="#1d1c19" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="330" y="96">latex balloon</text>
+  <path d="M326 92h-40" stroke="#1d1c19" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- tether + parachute -->
+  <path d="M200 292V330" stroke="#1d1c19" stroke-width="1.5"/>
+  <path d="M170 350q30-34 60 0z" fill="#e05a2b" stroke="#1d1c19" stroke-width="1.5"/>
+  <path d="M170 350l30 40M230 350l-30 40M200 350v40" stroke="#1d1c19" stroke-width="1"/>
+  <text x="330" y="352">parachute</text>
+  <path d="M326 348h-86" stroke="#1d1c19" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- payload 3U -->
+  <rect x="172" y="390" width="56" height="168" fill="#f7f5ee" stroke="#1d1c19" stroke-width="2"/>
+  <path d="M172 446h56M172 502h56" stroke="#1d1c19" stroke-width="1" stroke-dasharray="4 3"/>
+  <rect x="182" y="456" width="36" height="36" fill="#14532d" stroke="#1d1c19"/>
+  <g fill="#c58b2b"><circle cx="187" cy="461" r="2"/><circle cx="213" cy="461" r="2"/><circle cx="187" cy="487" r="2"/><circle cx="213" cy="487" r="2"/></g>
+  <rect x="194" y="468" width="12" height="12" fill="#1d1c19"/>
+  <text x="330" y="474">3U payload, 100 × 100 × 300</text>
+  <text x="330" y="494" fill="#5f5b52">one 4-layer board, ~90 × 90 mm</text>
+  <path d="M326 470h-104" stroke="#1d1c19" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- radio link -->
+  <path d="M236 420q60-30 120 0" fill="none" stroke="#1b6a41" stroke-width="1.5" stroke-dasharray="3 5"/>
+  <path d="M236 430q80-50 160 0" fill="none" stroke="#1b6a41" stroke-width="1.5" stroke-dasharray="3 5"/>
+  <text x="560" y="410" fill="#1b6a41">LoRa ×2 → ground</text>
+  <path d="M600 560v-60l-14 60M600 500l14 60" stroke="#1d1c19" stroke-width="1.5" fill="none"/>
+  <path d="M600 500l-18-18M600 500l18-18" stroke="#1d1c19" stroke-width="1.5"/>
+  <text x="560" y="590" font-size="11" fill="#5f5b52">ground station</text>
+
+  <!-- mission list -->
+  <g font-size="12">
+    <text x="520" y="70" font-weight="bold">MISSIONS</text>
+    <text x="520" y="94">M1 upper-air profile</text>
+    <text x="520" y="114">M2 Tashkent air quality</text>
+    <text x="520" y="134">M3 cosmic-ray dose</text>
+    <text x="520" y="154">M4 UV + ozone</text>
+    <text x="520" y="174">M5 GNSS vs altitude</text>
+    <text x="520" y="194">M6 LoRa link budget</text>
+    <text x="520" y="214">M7 memory under stress</text>
+  </g>
+  <g stroke="#1d1c19" stroke-width="1.5" fill="none"><rect x="508" y="48" width="252" height="182"/></g>
+  <text x="508" y="262" font-size="11" fill="#5f5b52">not to scale · dimensions in mm</text>
+</svg>

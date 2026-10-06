@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Consolas, 'DejaVu Sans Mono', monospace" font-size="13" fill="#1d1c19">
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e4dfd2" stroke-width="1"/></pattern>
+    <marker id="a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" fill="#1d1c19"/></marker>
+  </defs>
+  <rect width="800" height="600" fill="#f7f5ee"/>
+  <rect width="800" height="600" fill="url(#g)"/>
+
+  <!-- front view: 3U, 100 x 300 mm at 1.4 px/mm -->
+  <g stroke="#1d1c19" fill="none" stroke-width="2">
+    <rect x="150" y="90" width="140" height="420" fill="#f7f5ee"/>
+    <!-- rails -->
+    <rect x="150" y="90" width="12" height="420" fill="#d8d2c2"/>
+    <rect x="278" y="90" width="12" height="420" fill="#d8d2c2"/>
+    <!-- unit separators -->
+    <path d="M162 230H278M162 370H278" stroke-width="1.2" stroke-dasharray="6 4"/>
+  </g>
+  <!-- solar cells -->
+  <g fill="#1f3b63" stroke="#0d1d33" stroke-width="1">
+    <rect x="172" y="104" width="44" height="112"/><rect x="224" y="104" width="44" height="112"/>
+    <rect x="172" y="244" width="44" height="112"/><rect x="224" y="244" width="44" height="112"/>
+  </g>
+  <g stroke="#3d5f8f" stroke-width="1">
+    <path d="M172 132h44M172 160h44M172 188h44M224 132h44M224 160h44M224 188h44"/>
+    <path d="M172 272h44M172 300h44M172 328h44M224 272h44M224 300h44M224 328h44"/>
+  </g>
+  <!-- bottom unit: payload window + PCB stack hint -->
+  <rect x="190" y="400" width="60" height="60" rx="4" fill="#cfd6d1" stroke="#1d1c19" stroke-width="1.5"/>
+  <circle cx="220" cy="430" r="16" fill="#1d1c19"/><circle cx="214" cy="424" r="5" fill="#5d6b78"/>
+  <text x="220" y="488" text-anchor="middle" font-size="11">payload</text>
+  <!-- antenna -->
+  <path d="M220 90V40M220 40l60-18" stroke="#1d1c19" stroke-width="2" fill="none"/>
+  <text x="286" y="24" font-size="12">antenna</text>
+
+  <!-- dimensions -->
+  <g stroke="#1d1c19" stroke-width="1" fill="none">
+    <path d="M150 530v24M290 530v24"/>
+    <path d="M150 546H290" marker-start="url(#a)" marker-end="url(#a)"/>
+    <path d="M110 90h30M110 510h30"/>
+    <path d="M122 90V510" marker-start="url(#a)" marker-end="url(#a)"/>
+  </g>
+  <text x="220" y="572" text-anchor="middle">100</text>
+  <text x="104" y="305" text-anchor="middle" transform="rotate(-90 104 305)">300</text>
+
+  <!-- top view -->
+  <g stroke="#1d1c19" stroke-width="2" fill="#f7f5ee">
+    <rect x="420" y="110" width="140" height="140"/>
+    <rect x="420" y="110" width="12" height="12" fill="#d8d2c2"/><rect x="548" y="110" width="12" height="12" fill="#d8d2c2"/>
+    <rect x="420" y="238" width="12" height="12" fill="#d8d2c2"/><rect x="548" y="238" width="12" height="12" fill="#d8d2c2"/>
+  </g>
+  <text x="490" y="184" text-anchor="middle" font-size="12">TOP</text>
+  <g stroke="#1d1c19" stroke-width="1" fill="none">
+    <path d="M420 262v20M560 262v20M420 274H560" marker-start="url(#a)" marker-end="url(#a)"/>
+  </g>
+  <text x="490" y="298" text-anchor="middle">100</text>
+
+  <!-- notes -->
+  <g font-size="13">
+    <text x="420" y="350">3U CUBESAT</text>
+    <text x="420" y="372" fill="#5f5b52">flown on a stratospheric balloon</text>
+    <text x="420" y="394" fill="#5f5b52">supplied kit + our own payload</text>
+    <text x="420" y="416" fill="#5f5b52">dimensions in mm, not to scale</text>
+  </g>
+  <!-- title block -->
+  <g stroke="#1d1c19" stroke-width="1.5" fill="none">
+    <rect x="420" y="470" width="340" height="90"/>
+    <path d="M420 500H760M600 500V560M600 530H760"/>
+  </g>
+  <text x="432" y="491" font-size="15" font-weight="bold">ORBITA 2026 · NATIONAL TEAM</text>
+  <text x="432" y="522" font-size="11" fill="#5f5b52">LEAD EE</text>
+  <text x="432" y="544">A. Numonjonov</text>
+  <text x="612" y="522" font-size="11" fill="#5f5b52">SHEET</text><text x="700" y="522">1/1</text>
+  <text x="612" y="552" font-size="11" fill="#5f5b52">REV</text><text x="700" y="552">2026</text>
+</svg>

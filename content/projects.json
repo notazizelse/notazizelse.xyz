@@ -311,7 +311,12 @@
           "name": "reader.js",
           "label": "Reading screen (JavaScript)"
         }
-      ]
+      ],
+      "cover": {
+        "src": "static/art/glasses.svg",
+        "alt": "Drawing of the glasses: ESP32-CAM and button on the right hinge, battery on the left temple",
+        "caption": "How the parts sit on the frame, and where the photo goes."
+      }
     },
     {
       "slug": "haven",
@@ -772,7 +777,12 @@
           "label": "Team workspace on GitHub",
           "url": "https://github.com/notazizelse/orbita"
         }
-      ]
+      ],
+      "cover": {
+        "src": "static/art/orbita.svg",
+        "alt": "Technical drawing of a 3U CubeSat, 100 by 100 by 300 mm, with solar cells and a payload window",
+        "caption": "The 3U CubeSat format we build for, drawn like an engineering sheet."
+      }
     },
     {
       "slug": "wit",
@@ -944,7 +954,12 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/WiT"
         }
-      ]
+      ],
+      "cover": {
+        "src": "static/art/wit.svg",
+        "alt": "Drawing of a balloon, parachute and 3U payload with a radio link to a ground station, plus the list of seven missions",
+        "caption": "Balloon, parachute, payload, and the seven missions."
+      }
     },
     {
       "slug": "karatefc",
@@ -1016,7 +1031,12 @@
           "label": "GitHub",
           "url": "https://github.com/notazizelse/KarateFC"
         }
-      ]
+      ],
+      "cover": {
+        "src": "static/art/karatefc.svg",
+        "alt": "Concept sketch of a 36 mm flight controller with an STM32F405 and a 30.5 mm hole pattern",
+        "caption": "Concept sketch: STM32F405, USB-C, 30.5 mm mounting. Not a real layout yet."
+      }
     },
     {
       "slug": "vocabio",
