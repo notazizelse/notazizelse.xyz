@@ -2,3 +2,6 @@ dist/
 .cache/
 __pycache__/
 deploy/target.txt
+
+# Local editor config
+.claude/
